@@ -1,0 +1,81 @@
+.stats{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 10px 60px rgba(252, 225, 255, 0.5);
+}
+
+.stats__item{
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.stats__item .stat__icon{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    border-radius: 50%;
+}
+
+.stats__item:nth-child(1) .stat__icon{
+    background-color: var(--pale-orange);
+}
+
+.stats__item:nth-child(2) .stat__icon{
+    background-color: var(--pale-pink);
+}
+
+.stats__item:nth-child(3) .stat__icon{
+    background-color: var(--pale-green);
+}
+
+.stats__item:nth-child(4) .stat__icon{
+    background-color: var(--pale-primary);
+}
+
+.stats__item:nth-child(1) .stat__icon i{
+    color: var(--orange);
+}
+
+.stats__item:nth-child(2) .stat__icon i{
+    color: var(--pink);
+}
+
+.stats__item:nth-child(3) .stat__icon i{
+    color: var(--green);
+}
+
+.stats__item:nth-child(4) .stat__icon i{
+    color: var(--light-primary);
+}
+
+.stat__content{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.stat__title{
+    font-weight: 400;
+    font-size: 0.9375em;
+    color: var(--light-gray);
+}
+
+.stat__number{
+    font-size: 2em;
+    color: var(--dark-gray);
+}

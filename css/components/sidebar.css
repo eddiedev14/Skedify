@@ -1,0 +1,134 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    position: fixed;
+    width: 235px;
+    height: 100dvh;
+    top: 0;
+    left: -80%;
+    padding: 35px 25px;
+    box-shadow: 0 10px 20px rgba(135, 43, 247, .5);
+    transition: .5s ease-in-out left;
+}
+
+.sidebar.open{
+    left: 0;
+}
+
+.sidebar__close{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: var(--light-gray);
+    cursor: pointer;
+}
+
+.sidebar__logo{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo__name{
+    color: var(--dark-gray);
+    font-size: 1.5em;
+}
+
+.logo__version{
+    align-self: flex-end;
+    font-weight: 500;
+    font-size: 0.625em;
+    color: var(--light-gray);
+}
+
+.sidebar__content{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sidebar__links{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.sidebar__item{
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sidebar__item--selected{
+    background-color: var(--primary);
+    border-radius: 8px;
+}
+
+.sidebar__item a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.item__info{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item__info i{
+    font-size: 20px;
+    color: var(--light-gray);
+}
+
+.item__name{
+    color: var(--pale-gray);
+    font-weight: 500;
+    font-size: 0.875em;
+}
+
+.item__chevron{
+    font-size: 12px;
+}
+
+.item__info i, .item__name, .item__chevron{
+    transition: .3s ease-in-out color;
+}
+
+.sidebar__item--selected .item__name, .sidebar__item--selected .item__info i, .sidebar__item--selected .item__chevron{
+    color: #fff;
+}
+
+.sidebar__item:hover .item__info i, .sidebar__item:hover .item__name, .sidebar__item:hover .item__chevron{
+    color: var(--primary);
+}
+
+.sidebar__item--selected:hover .item__info i, .sidebar__item--selected:hover .item__name, .sidebar__item--selected:hover .item__chevron{
+    color: #fff;
+}
+
+.sidebar__socials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.socials__item{
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s ease-in-out scale;
+}
+
+.socials__item:hover{
+    scale: 1.1;
+}

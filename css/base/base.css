@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root{
+    --primary: #872BF7;
+    --dark-primary: #6719be;
+    --light-primary: #BF83FF;
+    --pale-primary: #F3E8FF;
+    --blue: #2381ED;
+    --orange: #FF947A;
+    --dark-orange: #E7690F;
+    --pale-orange: #FFF4DE;
+    --pink: #FA5A7D;
+    --pale-pink: #FFE2E5;
+    --green: #3CD856;
+    --pale-green: #DCFCE7;
+    --yellow: #FED600;
+    --red: #DE5753;
+
+    --green-status: #008767;
+    --light-green-status: rgba(22, 192, 152, 0.38);
+    --orange-status: #F78E2B;
+    --light-orange-status: rgba(247, 142, 43, 0.38);
+    --light-blue-status: rgba(35, 129, 237, 0.38);
+    --light-red-status: rgba(222, 87, 83, 0.38);
+
+    --background: #FAFBFF;
+    --dark-gray: #1D242E;
+    --light-gray: #6D6D6D;
+    --pale-gray: #9197B3;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--background);
+    font-family: "Figtree", serif;
+    padding: 35px 30px;
+}
+
+input, label, button, select{
+    font-family: "Figtree", serif;
+}

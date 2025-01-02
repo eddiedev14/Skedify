@@ -1,0 +1,36 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__group{
+    display: flex;
+    gap: 8px;
+}
+
+.header__menu{
+    color: var(--dark-gray);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header__heading{
+    font-weight: 600;
+    font-size: 1.125em;
+    color: var(--dark-gray);
+}
+
+.header__heading span{
+    color: var(--primary);
+}
+
+.header__avatar{
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.header__profile{
+    display: none;
+}

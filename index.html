@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skedify</title>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/akar-icons-fonts"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/pages/dashboard.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Skedify" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
+</head>
+<body>
+    <header class="header">
+        <div class="header__group">
+            <i class="ai-text-align-justified header__menu"></i>
+            <h1 class="header__heading">Dashboard - <span>Skedify</span></h1>
+        </div>
+        <div class="header__group">
+            <img src="assets/avatars/man-1.webp" alt="Avatar" class="header__avatar">
+            <div class="header__profile">
+                <p class="profile__user">Usuario</p>
+                <span class="profile__role">Emprendedor</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <i class="ai-cross sidebar__close"></i>
+        <div class="sidebar__content">
+            <div class="sidebar__logo">
+                <img src="assets/images/logo.webp" alt="Skedify Logo" class="logo__img">
+                <h2 class="logo__name">Skedify</h2>
+                <span class="logo__version">v.1.0</span>
+            </div>
+            <ul class="sidebar__links">
+                <li class="sidebar__item sidebar__item--selected">
+                    <a href="#">
+                        <div class="item__info">
+                            <i class="ai-dashboard"></i>
+                            <p class="item__name">Dashboard</p>
+                        </div>   
+                        <i class="ai-chevron-right item__chevron"></i>                        
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#">
+                        <div class="item__info">
+                            <i class="ai-schedule"></i>                                                
+                            <p class="item__name">Citas</p>
+                        </div>   
+                        <i class="ai-chevron-right item__chevron"></i>                        
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#">
+                        <div class="item__info"> 
+                            <i class="ai-people-group"></i>                                                    
+                            <p class="item__name">Clientes</p>
+                        </div>      
+                        <i class="ai-chevron-right item__chevron"></i>                     
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#">
+                        <div class="item__info">
+                            <i class="ai-cart"></i>                       
+                            <p class="item__name">Servicios</p>
+                        </div>       
+                        <i class="ai-chevron-right item__chevron"></i>                
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#">
+                        <div class="item__info">           
+                            <i class="ai-gear"></i>               
+                            <p class="item__name">Configuración</p>
+                        </div>   
+                        <i class="ai-chevron-right item__chevron"></i>                  
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar__socials">
+            <div class="socials__item"><i class="ai-github-fill"></i></div>
+            <div class="socials__item"><i class="ai-youtube-fill"></i></div>
+            <div class="socials__item"><i class="ai-linkedin-box-fill"></i></div>
+        </div>
+    </nav>
+
+    <section class="stats">
+        <div class="stats__item">
+            <div class="stat__icon"><i class="ai-schedule"></i></div>
+            <div class="stat__content">
+                <h4 class="stat__title">Citas para Hoy</h4>
+                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+            </div>
+        </div>
+        <div class="stats__item">
+            <div class="stat__icon"><i class="ai-calendar"></i></div>
+            <div class="stat__content">
+                <h4 class="stat__title">Citas Pendientes</h4>
+                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+            </div>
+        </div>
+        <div class="stats__item">
+            <div class="stat__icon"><i class="ai-people-group"></i></div>
+            <div class="stat__content">
+                <h4 class="stat__title">Clientes Reg.</h4>
+                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+            </div>
+        </div>
+        <div class="stats__item">
+            <div class="stat__icon"><i class="ai-cart"></i></div>
+            <div class="stat__content">
+                <h4 class="stat__title">Servicios Reg.</h4>
+                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/pages/dashboard.js" type="module"></script>
+</body>
+</html>
