@@ -1,0 +1,128 @@
+.sections{
+    margin-top: 36px;
+}
+
+.sections__cards{
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    column-gap: 20px;
+}
+
+.sections__card{
+    width: 100px;
+}
+
+.sections__card a{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.sections__picture{
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1/1;
+}
+
+.sections__card:nth-child(1) .sections__picture{
+    background-color: var(--primary);
+}
+
+.sections__card:nth-child(2) .sections__picture{
+    background-color: var(--blue);
+}
+
+.sections__card:nth-child(3) .sections__picture{
+    background-color: var(--dark-orange);
+}
+
+.sections__picture img{
+    width: 100px;
+    aspect-ratio: 1/1;
+}
+
+.sections__heading{
+    font-weight: 400;
+    font-size: 0.9375em;
+    color: var(--dark-gray);
+    transition: .3s ease-in-out color;
+}
+
+.sections__card:nth-child(1):hover .sections__heading, .sections__card:nth-child(1) a:focus .sections__heading{
+    color: var(--primary);
+}
+
+.sections__card:nth-child(2):hover .sections__heading, .sections__card:nth-child(2) a:focus .sections__heading{
+    color: var(--dark-orange);
+}
+
+.sections__card:nth-child(2):hover .sections__heading, .sections__card:nth-child(2) a:focus .sections__heading{
+    color: var(--blue);
+}
+
+.sections__wallet{
+    margin-top: 24px;
+}
+
+.wallet__card{
+    margin-top: 18px;
+    padding-top: 10px;
+    width: 212px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 2px solid var(--yellow);
+}
+
+.wallet__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 10px;
+}
+
+.wallet__content i{
+    color: var(--yellow);
+    font-size: 38px;
+}
+
+.wallet__amount{
+    font-size: 20px;
+    color: var(--dark-gray);
+}
+
+.wallet__label{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+.wallet__select{
+    border: none;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.wallet__footer{
+    width: 100%;
+    padding: 4px 0;
+    background-color: rgba(254, 214, 0, .3);
+}
+
+.wallet__footer a{
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 12px;
+    gap: 8px;
+}

@@ -44,3 +44,18 @@ body{
 input, label, button, select{
     font-family: "Figtree", serif;
 }
+
+.container{
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 10px 60px rgba(252, 225, 255, 0.5);
+}
+
+.container__heading{
+    display: flex;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--dark-gray);
+}

@@ -1,18 +1,13 @@
 .stats{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     justify-content: center;
     align-items: center;
     margin-top: 18px;
-    background-color: #fff;
-    border-radius: 30px;
-    padding: 25px;
-    box-shadow: 0 10px 60px rgba(252, 225, 255, 0.5);
 }
 
 .stats__item{
-    width: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
