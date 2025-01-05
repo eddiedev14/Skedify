@@ -1,5 +1,7 @@
 .sections{
     margin-top: 36px;
+    container-type: inline-size;
+    container-name: sections;
 }
 
 .sections__cards{
@@ -25,7 +27,6 @@
     border-radius: 8px;
     display: grid;
     place-items: center;
-    aspect-ratio: 1/1;
 }
 
 .sections__card:nth-child(1) .sections__picture{
@@ -106,6 +107,7 @@
 
 .wallet__select{
     border: none;
+    background: none;
     font-size: 12px;
     line-height: 14px;
 }
@@ -125,4 +127,16 @@
     color: var(--dark-gray);
     font-size: 12px;
     gap: 8px;
+}
+
+/* Responsive */
+
+@container sections (min-width: 500px) {
+    .sections__card{
+        width: 150px;
+    }
+
+    .sections__heading{
+        font-size: 1em;
+    }
 }

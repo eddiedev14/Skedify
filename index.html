@@ -17,76 +17,66 @@
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Skedify" />
-    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest"/>
 
 </head>
 <body>
-    <header class="header">
-        <div class="header__group">
-            <i class="ri-menu-line header__menu"></i>
-            <h1 class="header__heading">Dashboard - <span>Skedify</span></h1>
-        </div>
-        <div class="header__group">
-            <img src="assets/avatars/man-1.webp" alt="Avatar" class="header__avatar">
-            <div class="header__profile">
-                <p class="profile__user">Usuario</p>
-                <span class="profile__role">Emprendedor</span>
-            </div>
-        </div>
-    </header>
-
     <nav class="sidebar" id="sidebar">
-        <i class="ri-close-large-fill sidebar__close"></i>
+        <button type="button" class="sidebar__close">
+            <i class="ri-close-large-fill"></i>
+        </button>
         <div class="sidebar__content">
             <div class="sidebar__logo">
                 <img src="assets/images/logo.webp" alt="Skedify Logo" class="logo__img">
-                <h2 class="logo__name">Skedify</h2>
-                <span class="logo__version">v.1.0</span>
+                <div class="item__hide item__hide--logo">
+                    <h2 class="logo__name">Skedify</h2>
+                    <span class="logo__version">v.1.0</span>
+                </div>
             </div>
             <ul class="sidebar__links">
                 <li class="sidebar__item sidebar__item--selected">
                     <a href="#">
-                        <div class="item__info">
-                            <i class="ri-dashboard-fill"></i>
+                        <i class="ri-dashboard-fill"></i>
+                        <div class="item__hide">
                             <p class="item__name">Dashboard</p>
-                        </div>   
-                        <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
                     </a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#">
-                        <div class="item__info">
-                            <i class="ri-calendar-schedule-fill"></i>                                                
+                        <i class="ri-calendar-schedule-fill"></i>
+                        <div class="item__hide">
                             <p class="item__name">Citas</p>
-                        </div>   
-                        <i class="ri-arrow-right-s-line item__chevron"></i>                      
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
                     </a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#">
-                        <div class="item__info"> 
-                            <i class="ri-group-fill"></i>                                              
+                        <i class="ri-group-fill"></i>
+                        <div class="item__hide">
                             <p class="item__name">Clientes</p>
-                        </div>      
-                        <i class="ri-arrow-right-s-line item__chevron"></i>                   
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
                     </a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#">
-                        <div class="item__info">
-                            <i class="ri-briefcase-4-fill"></i>                     
+                        <i class="ri-briefcase-4-fill"></i>
+                        <div class="item__hide">
                             <p class="item__name">Servicios</p>
-                        </div>       
-                        <i class="ri-arrow-right-s-line item__chevron"></i>           
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
                     </a>
                 </li>
                 <li class="sidebar__item">
                     <a href="#">
-                        <div class="item__info">           
-                            <i class="ri-settings-5-fill"></i>            
+                        <i class="ri-settings-5-fill"></i>
+                        <div class="item__hide">
                             <p class="item__name">Configuración</p>
-                        </div>   
-                        <i class="ri-arrow-right-s-line item__chevron"></i>              
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
                     </a>
                 </li>
             </ul>
@@ -98,86 +88,105 @@
         </div>
     </nav>
 
-    <section class="container stats">
-        <div class="stats__item">
-            <div class="stat__icon"><i class="ri-calendar-schedule-line"></i></div>
-            <div class="stat__content">
-                <h4 class="stat__title">Citas para Hoy</h4>
-                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__group">
+                <button class="header__menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+                <h1 class="header__heading">Dashboard - <span>Skedify</span></h1>
             </div>
-        </div>
-        <div class="stats__item">
-            <div class="stat__icon"><i class="ri-calendar-event-line"></i></div>
-            <div class="stat__content">
-                <h4 class="stat__title">Citas Pendientes</h4>
-                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
-            </div>
-        </div>
-        <div class="stats__item">
-            <div class="stat__icon"><i class="ri-group-line"></i></div>
-            <div class="stat__content">
-                <h4 class="stat__title">Clientes Reg.</h4>
-                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
-            </div>
-        </div>
-        <div class="stats__item">
-            <div class="stat__icon"><i class="ri-briefcase-4-line"></i> </div>
-            <div class="stat__content">
-                <h4 class="stat__title">Servicios Reg.</h4>
-                <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container sections">
-        <h3 class="container__heading"><i class="ri-star-line"></i> Secciones Recomendadas</h3>
-        <div class="sections__cards">
-            <div class="sections__card">
-                <a href="#">
-                    <div class="sections__picture">
-                        <img src="assets/svg/citas-agendadas.svg" alt="Citas Agendadas">
-                    </div>
-                    <h4 class="sections__heading">Ir a Citas</h4>
-                </a>
-            </div>
-            <div class="sections__card">
-                <a href="#">
-                    <div class="sections__picture">
-                        <img src="assets/svg/clientes-registrados.svg" alt="Clientes Registrados">
-                    </div>
-                    <h4 class="sections__heading">Ir a Clientes</h4>
-                </a>
-            </div>
-            <div class="sections__card">
-                <a href="#">
-                    <div class="sections__picture">
-                        <img src="assets/svg/servicios-registrados.svg" alt="Servicios Registrados">
-                    </div>
-                    <h4 class="sections__heading">Ir a Servicios</h4>
-                </a>
-            </div>
-        </div>
-        <div class="sections__wallet">
-            <h3 class="container__heading">Cartera</h3>
-            <div class="wallet__card">
-                <div class="wallet__content">
-                    <i class="ri-wallet-3-fill"></i>
-                    <strong class="wallet__amount"><span>$ 3.500.000</span></strong>
-                    <form action="#" class="wallet__form">
-                        <label for="ingresos" class="wallet__label">Ingresos:</label>
-                        <select name="ingresos" id="ingresos" class="wallet__select">
-                            <option value="Mensuales">Mensuales</option>
-                            <option value="Diarios">Diarios</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="wallet__footer">
-                    <a href="#" class="wallet__cta">Ver Citas Agendadas <i class="ri-arrow-right-double-line"></i></a>
+            <div class="header__group">
+                <img src="assets/avatars/man-1.webp" alt="Avatar" class="header__avatar">
+                <div class="header__profile">
+                    <p class="profile__user">Usuario</p>
+                    <span class="profile__role">Emprendedor</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
+    
+        <section class="container stats">
+            <div class="stats__item">
+                <div class="stat__icon"><i class="ri-calendar-schedule-line"></i></div>
+                <div class="stat__content">
+                    <h4 class="stat__title">Citas para Hoy</h4>
+                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                </div>
+            </div>
+            <div class="stats__item">
+                <div class="stat__icon"><i class="ri-calendar-event-line"></i></div>
+                <div class="stat__content">
+                    <h4 class="stat__title">Pendientes</h4>
+                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                </div>
+            </div>
+            <div class="stats__item">
+                <div class="stat__icon"><i class="ri-group-line"></i></div>
+                <div class="stat__content">
+                    <h4 class="stat__title">Clientes Reg.</h4>
+                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                </div>
+            </div>
+            <div class="stats__item">
+                <div class="stat__icon"><i class="ri-briefcase-4-line"></i> </div>
+                <div class="stat__content">
+                    <h4 class="stat__title">Servicios Reg.</h4>
+                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                </div>
+            </div>
+        </section>
+    
+        <section class="container sections">
+            <h3 class="container__heading"><i class="ri-star-line"></i> Secciones Recomendadas</h3>
+            <div class="sections__cards">
+                <div class="sections__card">
+                    <a href="#">
+                        <div class="sections__picture">
+                            <img src="assets/svg/citas-agendadas.svg" alt="Citas Agendadas">
+                        </div>
+                        <h4 class="sections__heading">Ir a Citas</h4>
+                    </a>
+                </div>
+                <div class="sections__card">
+                    <a href="#">
+                        <div class="sections__picture">
+                            <img src="assets/svg/clientes-registrados.svg" alt="Clientes Registrados">
+                        </div>
+                        <h4 class="sections__heading">Ir a Clientes</h4>
+                    </a>
+                </div>
+                <div class="sections__card">
+                    <a href="#">
+                        <div class="sections__picture">
+                            <img src="assets/svg/servicios-registrados.svg" alt="Servicios Registrados">
+                        </div>
+                        <h4 class="sections__heading">Ir a Servicios</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="sections__wallet">
+                <h3 class="container__heading">Cartera</h3>
+                <div class="wallet__card">
+                    <div class="wallet__content">
+                        <i class="ri-wallet-3-fill"></i>
+                        <strong class="wallet__amount"><span>$ 3.500.000</span></strong>
+                        <form action="#" class="wallet__form">
+                            <label for="ingresos" class="wallet__label">Ingresos:</label>
+                            <select name="ingresos" id="ingresos" class="wallet__select">
+                                <option value="Mensuales">Mensuales</option>
+                                <option value="Diarios">Diarios</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="wallet__footer">
+                        <a href="#" class="wallet__cta">Ver Citas Agendadas <i class="ri-arrow-right-double-line"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
+    <script src="js/main.js" type="module"></script>
     <script src="js/pages/dashboard.js" type="module"></script>
 </body>
 </html>

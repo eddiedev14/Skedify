@@ -10,6 +10,8 @@
 }
 
 .header__menu{
+    border: none;
+    background: none;
     color: var(--dark-gray);
     font-size: 20px;
     cursor: pointer;
@@ -33,4 +35,12 @@
 
 .header__profile{
     display: none;
+}
+
+/* Responsive */
+
+@media screen and (min-width: 744px) {
+    .header__menu{
+        display: none;
+    }
 }
