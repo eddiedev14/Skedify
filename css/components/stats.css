@@ -1,5 +1,4 @@
 .stats{
-    margin-top: 18px;
     container-type: inline-size;
     container-name: stats;
 }
@@ -110,5 +109,17 @@
     .stat__content{
         width: 115px;
         text-align: start;
+    }
+}
+
+@media screen and (min-width: 744px) {
+    .stats{
+        margin-top: 28px;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .stats{
+        margin-top: 40px;
     }
 }

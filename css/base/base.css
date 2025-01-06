@@ -50,6 +50,7 @@ input, label, button, select{
 }
 
 .container{
+    margin-top: 18px;
     background-color: #fff;
     border-radius: 30px;
     padding: 25px;
@@ -101,13 +102,27 @@ input, label, button, select{
        padding: 35px 40px;
    }
 
+   .container{
+        margin-top: 28px;
+   }
+
    .container__heading{
        font-size: 1.375em;
    }
+}
+
+@media screen and (min-width: 964px) {
+    .container{
+        margin-top: 40px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
     .wrapper{
        padding: 35px 50px;
    }
+
+   .container{
+        padding: 35px 40px;
+    }
 }
