@@ -35,7 +35,7 @@
             </div>
             <ul class="sidebar__links">
                 <li class="sidebar__item sidebar__item--selected">
-                    <a href="#">
+                    <a href="index.html">
                         <i class="ri-dashboard-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Dashboard</p>
@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#">
+                    <a href="pages/citas/control.html">
                         <i class="ri-calendar-schedule-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Citas</p>
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#">
+                    <a href="pages/clientes/control.html">
                         <i class="ri-group-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Clientes</p>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#">
+                    <a href="pages/servicios/control.html">
                         <i class="ri-briefcase-4-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Servicios</p>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#">
+                    <a href="pages/configuracion.html">
                         <i class="ri-settings-5-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Configuración</p>
@@ -82,9 +82,9 @@
             </ul>
         </div>
         <div class="sidebar__socials">
-            <div class="socials__item"><i class="ri-github-fill"></i></div>
-            <div class="socials__item"><i class="ri-youtube-fill"></i></div>
-            <div class="socials__item"><i class="ri-linkedin-box-fill"></i></div>
+            <div class="socials__item"><a href="https://github.com/eddiedev14" target="_blank"><i class="ri-github-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.youtube.com/@todocodigo/videos" target="_blank"><i class="ri-youtube-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.linkedin.com/in/eddie-santiago-delgado-campo-96690a2a3/" target="_blank"><i class="ri-linkedin-box-fill"></i></a></div>
         </div>
     </nav>
 
@@ -106,80 +106,86 @@
         </header>
     
         <section class="container stats">
-            <div class="stats__item">
-                <div class="stat__icon"><i class="ri-calendar-schedule-line"></i></div>
-                <div class="stat__content">
-                    <h4 class="stat__title">Citas para Hoy</h4>
-                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+            <div class="stats__items">
+                <div class="stats__item">
+                    <div class="stat__icon"><i class="ri-calendar-schedule-line"></i></div>
+                    <div class="stat__content">
+                        <h4 class="stat__title">Citas para Hoy</h4>
+                        <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                    </div>
                 </div>
-            </div>
-            <div class="stats__item">
-                <div class="stat__icon"><i class="ri-calendar-event-line"></i></div>
-                <div class="stat__content">
-                    <h4 class="stat__title">Pendientes</h4>
-                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                <div class="stats__item">
+                    <div class="stat__icon"><i class="ri-calendar-event-line"></i></div>
+                    <div class="stat__content">
+                        <h4 class="stat__title">Pendientes</h4>
+                        <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                    </div>
                 </div>
-            </div>
-            <div class="stats__item">
-                <div class="stat__icon"><i class="ri-group-line"></i></div>
-                <div class="stat__content">
-                    <h4 class="stat__title">Clientes Reg.</h4>
-                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                <div class="stats__item">
+                    <div class="stat__icon"><i class="ri-group-line"></i></div>
+                    <div class="stat__content">
+                        <h4 class="stat__title">Clientes Reg.</h4>
+                        <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                    </div>
                 </div>
-            </div>
-            <div class="stats__item">
-                <div class="stat__icon"><i class="ri-briefcase-4-line"></i> </div>
-                <div class="stat__content">
-                    <h4 class="stat__title">Servicios Reg.</h4>
-                    <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                <div class="stats__item">
+                    <div class="stat__icon"><i class="ri-briefcase-4-line"></i> </div>
+                    <div class="stat__content">
+                        <h4 class="stat__title">Servicios Reg.</h4>
+                        <p class="stat__number" id="citas-hoy"><strong>23</strong></p>
+                    </div>
                 </div>
             </div>
         </section>
     
         <section class="container sections">
-            <h3 class="container__heading"><i class="ri-star-line"></i> Secciones Recomendadas</h3>
-            <div class="sections__cards">
-                <div class="sections__card">
-                    <a href="#">
-                        <div class="sections__picture">
-                            <img src="assets/svg/citas-agendadas.svg" alt="Citas Agendadas">
+            <div class="sections__wrapper">
+                <div class="sections__container">
+                    <h3 class="container__heading"><i class="ri-star-line"></i> Secciones Recomendadas</h3>
+                    <div class="sections__cards">
+                        <div class="sections__card">
+                            <a href="#">
+                                <div class="sections__picture">
+                                    <img src="assets/svg/citas-agendadas.svg" alt="Citas Agendadas">
+                                </div>
+                                <h4 class="sections__heading">Ir a Citas</h4>
+                            </a>
                         </div>
-                        <h4 class="sections__heading">Ir a Citas</h4>
-                    </a>
-                </div>
-                <div class="sections__card">
-                    <a href="#">
-                        <div class="sections__picture">
-                            <img src="assets/svg/clientes-registrados.svg" alt="Clientes Registrados">
+                        <div class="sections__card">
+                            <a href="#">
+                                <div class="sections__picture">
+                                    <img src="assets/svg/clientes-registrados.svg" alt="Clientes Registrados">
+                                </div>
+                                <h4 class="sections__heading">Ir a Clientes</h4>
+                            </a>
                         </div>
-                        <h4 class="sections__heading">Ir a Clientes</h4>
-                    </a>
-                </div>
-                <div class="sections__card">
-                    <a href="#">
-                        <div class="sections__picture">
-                            <img src="assets/svg/servicios-registrados.svg" alt="Servicios Registrados">
+                        <div class="sections__card">
+                            <a href="#">
+                                <div class="sections__picture">
+                                    <img src="assets/svg/servicios-registrados.svg" alt="Servicios Registrados">
+                                </div>
+                                <h4 class="sections__heading">Ir a Servicios</h4>
+                            </a>
                         </div>
-                        <h4 class="sections__heading">Ir a Servicios</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="sections__wallet">
-                <h3 class="container__heading">Cartera</h3>
-                <div class="wallet__card">
-                    <div class="wallet__content">
-                        <i class="ri-wallet-3-fill"></i>
-                        <strong class="wallet__amount"><span>$ 3.500.000</span></strong>
-                        <form action="#" class="wallet__form">
-                            <label for="ingresos" class="wallet__label">Ingresos:</label>
-                            <select name="ingresos" id="ingresos" class="wallet__select">
-                                <option value="Mensuales">Mensuales</option>
-                                <option value="Diarios">Diarios</option>
-                            </select>
-                        </form>
                     </div>
-                    <div class="wallet__footer">
-                        <a href="#" class="wallet__cta">Ver Citas Agendadas <i class="ri-arrow-right-double-line"></i></a>
+                </div>
+                <div class="sections__wallet">
+                    <h3 class="container__heading">Cartera</h3>
+                    <div class="wallet__card">
+                        <div class="wallet__content">
+                            <i class="ri-wallet-3-fill"></i>
+                            <strong class="wallet__amount"><span>$ 3.500.000</span></strong>
+                            <form action="#" class="wallet__form">
+                                <label for="ingresos" class="wallet__label">Ingresos:</label>
+                                <select name="ingresos" id="ingresos" class="wallet__select">
+                                    <option value="Mensuales">Mensuales</option>
+                                    <option value="Diarios">Diarios</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="wallet__footer">
+                            <a href="#" class="wallet__cta">Ver Citas Agendadas <i class="ri-arrow-right-double-line"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

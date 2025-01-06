@@ -1,10 +1,15 @@
 .stats{
+    margin-top: 18px;
+    container-type: inline-size;
+    container-name: stats;
+}
+
+.stats__items{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     justify-content: center;
     align-items: center;
-    margin-top: 18px;
 }
 
 .stats__item{
@@ -73,4 +78,37 @@
 .stat__number{
     font-size: 2em;
     color: var(--dark-gray);
+}
+
+/* Responsive */
+
+@container stats (min-width: 500px) {
+    .stats__item{
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .stat__content{
+        width: 105px;
+        text-align: start;
+    }
+
+    .stat__title{
+        font-size: 1em;
+    }
+    
+    .stat__number{
+        font-size: 2.125em;
+    }
+}
+
+@container stats (min-width: 870px) {
+    .stats__items{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat__content{
+        width: 115px;
+        text-align: start;
+    }
 }

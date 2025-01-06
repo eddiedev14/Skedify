@@ -29,7 +29,7 @@
 
 .header__avatar{
     width: 32px;
-    height: 32px;
+    aspect-ratio: 1/1;
     cursor: pointer;
 }
 
@@ -42,5 +42,49 @@
 @media screen and (min-width: 744px) {
     .header__menu{
         display: none;
+    }
+
+    .header__heading{
+        font-weight: 600;
+        font-size: 1.625em;
+        color: var(--dark-gray);
+    }
+
+    .header__avatar{
+        width: 38px;
+    }
+
+    .header__profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profile__user{
+        font-weight: 500;
+        color: var(--dark-gray);
+    }
+
+    .profile__role{
+        font-size: 0.75em;
+        color: var(--light-gray);
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .header__group{
+        gap: 14px;
+    }
+
+    .header__avatar{
+        width: 42px;
+    }
+
+    .profile__user{
+        font-size: 1.125em;
+    }
+
+    .profile__role{
+        font-size: 0.8125em;
     }
 }

@@ -130,9 +130,12 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    color: #fff;
-    cursor: pointer;
     transition: .3s ease-in-out scale;
+}
+
+.socials__item a{
+    text-decoration: none;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -151,7 +154,6 @@
         width: 100px;
         align-items: center;
         left: 0;
-        padding: 35px 20px;
         overflow: hidden;
         white-space: nowrap;
         transition: width 0.3s ease-in-out;
@@ -211,6 +213,6 @@
     }
 
     .sidebar:hover .sidebar__socials{
-        width: 128px;
+        width: 132px;
     }
 }

@@ -38,11 +38,15 @@
 body{
     background-color: var(--background);
     font-family: "Figtree", serif;
-    padding: 35px 30px;
 }
 
 input, label, button, select{
     font-family: "Figtree", serif;
+}
+
+.wrapper{
+    padding: 35px 30px;
+    grid-column: 2;
 }
 
 .container{
@@ -56,12 +60,54 @@ input, label, button, select{
     display: flex;
     gap: 6px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.125em;
     color: var(--dark-gray);
 }
 
 /* Responsive */
 
 @media screen and (min-width: 744px) {
-     
+     body{
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        transition: .3s ease-in-out grid-template-columns;
+     }
+
+     body:has(.sidebar:hover){
+        grid-template-columns: 235px 1fr;
+     }
+
+     .wrapper{
+        padding: 35px 40px;
+    }
+
+    .container__heading{
+        font-size: 1.375em;
+    }
+}
+
+@media screen and (min-width: 744px) {
+    body{
+       display: grid;
+       grid-template-columns: 100px 1fr;
+       transition: .3s ease-in-out grid-template-columns;
+    }
+
+    body:has(.sidebar:hover){
+       grid-template-columns: 235px 1fr;
+    }
+
+    .wrapper{
+       padding: 35px 40px;
+   }
+
+   .container__heading{
+       font-size: 1.375em;
+   }
+}
+
+@media screen and (min-width: 1280px) {
+    .wrapper{
+       padding: 35px 50px;
+   }
 }

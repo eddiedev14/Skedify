@@ -58,11 +58,11 @@
 }
 
 .sections__card:nth-child(2):hover .sections__heading, .sections__card:nth-child(2) a:focus .sections__heading{
-    color: var(--dark-orange);
+    color: var(--blue);
 }
 
-.sections__card:nth-child(2):hover .sections__heading, .sections__card:nth-child(2) a:focus .sections__heading{
-    color: var(--blue);
+.sections__card:nth-child(3):hover .sections__heading, .sections__card:nth-child(3) a:focus .sections__heading{
+    color: var(--dark-orange);
 }
 
 .sections__wallet{
@@ -138,5 +138,49 @@
 
     .sections__heading{
         font-size: 1em;
+    }
+}
+
+@container sections (min-width: 870px) {
+    .sections__wrapper{
+        display: flex;
+        gap: 32px;
+    }
+    
+    .sections__container{
+        padding-right: 32px;
+        border-right: 1px solid #EBEBEB;
+    }
+
+    .sections__cards{
+        margin-top: 18px;
+    }
+
+    .sections__card{
+        width: 165px;
+    }
+
+    .sections__card a{
+        gap: 12px;
+    }
+
+    .sections__picture{
+        height: 110px;
+    }
+
+    .sections__heading{
+        font-size: 1.125em;
+    }
+
+    .sections__wallet{
+        margin-top: 0;
+    }
+
+    .wallet__card{
+        margin-top: 18px;
+    }
+
+    .wallet__select{
+        font-size: 14px;
     }
 }
