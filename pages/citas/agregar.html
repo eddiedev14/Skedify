@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <ul class="sidebar__links">
-                <li class="sidebar__item sidebar__item--selected">
+                <li class="sidebar__item">
                     <a href="/index.html">
                         <i class="ri-dashboard-fill"></i>
                         <div class="item__hide">
@@ -43,7 +43,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="sidebar__item">
+                <li class="sidebar__item sidebar__item--selected">
                     <a href="/pages/citas/control.html">
                         <i class="ri-calendar-schedule-fill"></i>
                         <div class="item__hide">
@@ -94,10 +94,10 @@
                 <button class="header__menu">
                     <i class="ri-menu-line"></i>
                 </button>
-                <h1 class="header__heading">Control de Citas - <span>Skedify</span></h1>
+                <h1 class="header__heading">Citas - <span>Skedify</span></h1>
             </div>
             <div class="header__group">
-                <img src="/assets/avatars/man-1.webp" alt="Avatar" class="header__avatar">
+                <img src="/assets/avatars/man-1.svg" alt="Avatar" class="header__avatar">
                 <div class="header__profile">
                     <p class="profile__user">Usuario</p>
                     <span class="profile__role">Emprendedor</span>
@@ -106,7 +106,7 @@
         </header>
 
         <main class="container main">
-            <h3 class="container__heading">Agregar Cita</h3>
+            <h3 class="container__heading">Crear Cita</h3>
             <form action="#" class="form">
                 <div class="form__group">
                     <label for="cliente" class="form__label">Cliente</label>
@@ -125,7 +125,7 @@
                     <input type="datetime-local" name="fecha" id="fecha" class="form__input form__input--datetime">
                 </div>
                 <div class="form__buttons">
-                    <button type="submit" class="form__submit">Agregar Cita <i class="ri-add-line"></i></button>
+                    <button type="submit" class="form__submit">Crear Cita <i class="ri-add-line"></i></button>
                     <a href="control.html" class="form__return">Regresar</a>
                 </div>
             </form>
@@ -133,6 +133,6 @@
     </div>
 
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/pages/citas/control.js" type="module"></script>
+    <script src="/js/pages/citas/agregar.js" type="module"></script>
 </body>
 </html>

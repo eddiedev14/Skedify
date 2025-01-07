@@ -68,34 +68,10 @@ input, label, button, select{
 /* Responsive */
 
 @media screen and (min-width: 744px) {
-     body{
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        transition: .3s ease-in-out grid-template-columns;
-     }
-
-     body:has(.sidebar:hover){
-        grid-template-columns: 235px 1fr;
-     }
-
-     .wrapper{
-        padding: 35px 40px;
-    }
-
-    .container__heading{
-        font-size: 1.375em;
-    }
-}
-
-@media screen and (min-width: 744px) {
     body{
        display: grid;
        grid-template-columns: 100px 1fr;
        transition: .3s ease-in-out grid-template-columns;
-    }
-
-    body:has(.sidebar:hover){
-       grid-template-columns: 235px 1fr;
     }
 
     .wrapper{
@@ -114,6 +90,10 @@ input, label, button, select{
 @media screen and (min-width: 964px) {
     .container{
         margin-top: 40px;
+    }
+
+    .container__heading{
+        font-size: 1.5em;   
     }
 }
 

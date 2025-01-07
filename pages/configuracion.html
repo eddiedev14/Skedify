@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skedify</title>
+
+    <!-- Scripts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/pages/configuracion.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Skedify" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+
+</head>
+<body>
+    <nav class="sidebar" id="sidebar">
+        <button type="button" class="sidebar__close">
+            <i class="ri-close-large-fill"></i>
+        </button>
+        <div class="sidebar__content">
+            <div class="sidebar__logo">
+                <img src="/assets/images/logo.webp" alt="Skedify Logo" class="logo__img">
+                <div class="item__hide item__hide--logo">
+                    <h2 class="logo__name">Skedify</h2>
+                    <span class="logo__version">v.1.0</span>
+                </div>
+            </div>
+            <ul class="sidebar__links">
+                <li class="sidebar__item">
+                    <a href="/index.html">
+                        <i class="ri-dashboard-fill"></i>
+                        <div class="item__hide">
+                            <p class="item__name">Dashboard</p>
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="/pages/citas/control.html">
+                        <i class="ri-calendar-schedule-fill"></i>
+                        <div class="item__hide">
+                            <p class="item__name">Citas</p>
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="/pages/clientes/control.html">
+                        <i class="ri-group-fill"></i>
+                        <div class="item__hide">
+                            <p class="item__name">Clientes</p>
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="/pages/servicios/control.html">
+                        <i class="ri-briefcase-4-fill"></i>
+                        <div class="item__hide">
+                            <p class="item__name">Servicios</p>
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
+                    </a>
+                </li>
+                <li class="sidebar__item sidebar__item--selected">
+                    <a href="/pages/configuracion.html">
+                        <i class="ri-settings-5-fill"></i>
+                        <div class="item__hide">
+                            <p class="item__name">Configuración</p>
+                            <i class="ri-arrow-right-s-line item__chevron"></i>                       
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar__socials">
+            <div class="socials__item"><a href="https://github.com/eddiedev14" target="_blank"><i class="ri-github-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.youtube.com/@todocodigo/videos" target="_blank"><i class="ri-youtube-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.linkedin.com/in/eddie-santiago-delgado-campo-96690a2a3/" target="_blank"><i class="ri-linkedin-box-fill"></i></a></div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__group">
+                <button class="header__menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+                <h1 class="header__heading">Configuración - <span>Skedify</span></h1>
+            </div>
+            <div class="header__group">
+                <img src="/assets/avatars/man-1.svg" alt="Avatar" class="header__avatar">
+                <div class="header__profile">
+                    <p class="profile__user">Usuario</p>
+                    <span class="profile__role">Emprendedor</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container main">
+            <div class="profile__background"></div>
+            <div class="profile__container">
+                <h3 class="container__heading">Información del Perfil</h3>
+                <button type="button" class="profile__wrapper" aria-label="Click para cambiar la imagen de perfil">
+                    <img src="/assets/avatars/man-1.svg" alt="Profile Avatar">
+                    <div class="profile__hover">
+                        <i class="ri-upload-cloud-2-fill"></i>
+                    </div>
+                </button>
+                <form action="#" class="form">
+                    <input type="file" class="form__file" name="image" id="image">
+                    <div class="form__group">
+                        <label for="nombre" class="form__label">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López">
+                    </div>
+                    <div class="form__group">
+                        <label for="email" class="form__label">Email</label>
+                        <input type="text" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com">
+                    </div>
+                    <div class="form__group">
+                        <label for="telefono" class="form__label">Telefono</label>
+                        <input type="tel" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421">
+                    </div>
+                    <div class="form__group">
+                        <label for="rol" class="form__label">Rol</label>
+                        <input type="text" name="rol" id="rol" class="form__input" placeholder="E.g. Emprendedor">
+                    </div>
+                    <div class="form__buttons">
+                        <button type="submit" class="form__submit">Actualizar Perfil</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/main.js" type="module"></script>
+    <script src="/js/pages/configuracion.js" type="module"></script>
+</body>
+</html>

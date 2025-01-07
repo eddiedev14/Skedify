@@ -26,14 +26,18 @@
     overflow: hidden;
     text-decoration: none;
     color: #fff;
-    transition: .3s ease-in-out width;
+    transition: .3s ease-in-out width, .3s ease-in-out scale;
 }
 
-.main__action:nth-child(1){
+.main__action:hover{
+    scale: 1.03;
+}
+
+.main__action:first-child{
     background-color: var(--blue);
 }
 
-.main__action:nth-child(2){
+.main__action:last-child{
     background-color: var(--primary);
 }
 
