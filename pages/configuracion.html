@@ -109,7 +109,7 @@
             <div class="profile__background"></div>
             <div class="profile__container">
                 <h3 class="container__heading">Información del Perfil</h3>
-                <button type="button" class="profile__wrapper" aria-label="Click para cambiar la imagen de perfil">
+                <button type="button" class="profile__wrapper" aria-label="Click para cambiar la imagen de perfil" id="change-avatar">
                     <img src="/assets/avatars/man-1.svg" alt="Profile Avatar">
                     <div class="profile__hover">
                         <i class="ri-upload-cloud-2-fill"></i>
@@ -140,6 +140,29 @@
             </div>
         </main>
     </div>
+
+    <dialog class="modal" id="avatar-modal">
+        <div class="modal__container">
+            <section class="modal__card">
+            <header class="modal__header">
+                <h3 class="modal__heading">Selecciona un Avatar</h3>
+                <button type="button" class="modal__close"><i class="ri-close-line"></i></button>
+            </header>
+            <section class="modal__main">
+                <figure class="modal__figure"><img src="assets/avatars/man-1.svg" alt="Man Avatar #1"></figure>
+                <figure class="modal__figure"><img src="assets/avatars/woman-1.svg" alt="Woman Avatar #1"></figure>
+                <figure class="modal__figure"><img src="assets/avatars/man-2.svg" alt="Man Avatar #2"></figure>
+                <figure class="modal__figure"><img src="assets/avatars/woman-2.svg" alt="Woman Avatar #2"></figure>
+                <figure class="modal__figure"><img src="assets/avatars/man-3.svg" alt="Man Avatar #3"></figure>
+                <figure class="modal__figure"><img src="assets/avatars/woman-3.svg" alt="Woman Avatar #3"></figure>
+            </section>
+            <footer class="modal__footer">
+                <button type="button" class="modal__button modal__button--close">Cancelar</button>
+                <button type="button" class="modal__button modal__button--primary">Guardar Cambios</button>
+            </footer>
+        </section>
+        </div>
+    </dialog>
 
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/configuracion.js" type="module"></script>
