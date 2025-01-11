@@ -97,10 +97,10 @@
                 <h1 class="header__heading">Configuración - <span>Skedify</span></h1>
             </div>
             <div class="header__group">
-                <img src="/assets/avatars/man-1.svg" alt="Avatar" class="header__avatar">
+                <img src="" alt="Avatar" class="header__avatar">
                 <div class="header__profile">
-                    <p class="profile__user">Usuario</p>
-                    <span class="profile__role">Emprendedor</span>
+                    <p class="profile__user"></p>
+                    <span class="profile__role"></span>
                 </div>
             </div>
         </header>
@@ -110,24 +110,23 @@
             <div class="profile__container">
                 <h3 class="container__heading">Información del Perfil</h3>
                 <button type="button" class="profile__wrapper" aria-label="Click para cambiar la imagen de perfil" id="change-avatar">
-                    <img src="/assets/avatars/man-1.svg" alt="Profile Avatar">
+                    <img src="" alt="Profile Avatar" id="avatar">
                     <div class="profile__hover">
                         <i class="ri-upload-cloud-2-fill"></i>
                     </div>
                 </button>
                 <form action="#" class="form">
-                    <input type="file" class="form__file" name="image" id="image">
                     <div class="form__group">
-                        <label for="nombre" class="form__label">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López">
+                        <label for="nombre" class="form__label">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López" data-validate="required">
                     </div>
                     <div class="form__group">
                         <label for="email" class="form__label">Email</label>
-                        <input type="text" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com">
+                        <input type="text" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com" data-validate="email">
                     </div>
                     <div class="form__group">
                         <label for="telefono" class="form__label">Telefono</label>
-                        <input type="tel" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421">
+                        <input type="tel" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421" data-validate="phone">
                     </div>
                     <div class="form__group">
                         <label for="rol" class="form__label">Rol</label>
@@ -149,21 +148,22 @@
                 <button type="button" class="modal__close"><i class="ri-close-line"></i></button>
             </header>
             <section class="modal__main">
-                <figure class="modal__figure"><img src="/assets/avatars/man-1.svg" alt="Man Avatar #1"></figure>
-                <figure class="modal__figure"><img src="/assets/avatars/woman-1.svg" alt="Woman Avatar #1"></figure>
-                <figure class="modal__figure"><img src="/assets/avatars/man-2.svg" alt="Man Avatar #2"></figure>
-                <figure class="modal__figure"><img src="/assets/avatars/woman-2.svg" alt="Woman Avatar #2"></figure>
-                <figure class="modal__figure"><img src="/assets/avatars/man-3.svg" alt="Man Avatar #3"></figure>
-                <figure class="modal__figure"><img src="/assets/avatars/woman-3.svg" alt="Woman Avatar #3"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/man-1.svg" alt="Man Avatar #1" data-src="man-1"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/woman-1.svg" alt="Woman Avatar #1" data-src="woman-1"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/man-2.svg" alt="Man Avatar #2" data-src="man-2"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/woman-2.svg" alt="Woman Avatar #2" data-src="woman-2"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/man-3.svg" alt="Man Avatar #3" data-src="man-3"></figure>
+                <figure class="modal__figure"><img src="/assets/avatars/woman-3.svg" alt="Woman Avatar #3" data-src="woman-3"></figure>
             </section>
             <footer class="modal__footer">
                 <button type="button" class="modal__button modal__button--close">Cancelar</button>
-                <button type="button" class="modal__button modal__button--primary">Guardar Cambios</button>
+                <button type="button" class="modal__button modal__button--primary" id="update-avatar">Guardar Cambios</button>
             </footer>
         </section>
         </div>
     </dialog>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/configuracion.js" type="module"></script>
 </body>

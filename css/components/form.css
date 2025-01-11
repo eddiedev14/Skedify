@@ -35,6 +35,14 @@
     transition: .3s ease-in-out border-color;
 }
 
+.form__input.error{
+    border-color: #ed4646;
+}
+
+.form__input.error + span{
+    color: #ed4646;
+}
+
 .form__input--select{
     appearance: none;
     background-image: url('../../assets/svg/chevron-down.svg');
@@ -48,7 +56,7 @@
     border-color: var(--primary);
 }
 
-.form__input--datetime:invalid{
+.form__input.error:focus-visible, .form__input--datetime:invalid{
     border-color: #ed4646;
 }
 
