@@ -97,7 +97,7 @@
                 <h1 class="header__heading">Servicios - <span>Skedify</span></h1>
             </div>
             <div class="header__group">
-                <img src="/assets/avatars/man-1.svg" alt="Avatar" class="header__avatar">
+                <a href="/pages/configuracion.html"><img src="/assets/avatars/default-user.svg" alt="Avatar" class="header__avatar"></a>
                 <div class="header__profile">
                     <p class="profile__user"></p>
                     <span class="profile__role"></span>
@@ -109,16 +109,16 @@
             <h3 class="container__heading">Crear Servicio</h3>
             <form action="#" class="form">
                 <div class="form__group">
-                    <label for="nombre" class="form__label">Nombre del Servicio</label>
-                    <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Diseño Web">
+                    <label for="name" class="form__label">Nombre del Servicio</label>
+                    <input type="text" id="name" name="name" class="form__input" placeholder="E.g. Diseño Web" data-validate="required">
                 </div>
                 <div class="form__group">
-                    <label for="descripcion" class="form__label">Descripción</label>
-                    <input type="text" id="descripcion" name="descripcion" class="form__input" placeholder="E.g. Desarrollo de páginas webs">
+                    <label for="description" class="form__label">Descripción</label>
+                    <input type="text" id="description" name="description" class="form__input" placeholder="E.g. Desarrollo de páginas webs" data-validate="required">
                 </div>
                 <div class="form__group">
-                    <label for="precio" class="form__label">Precio</label>
-                    <input type="number" name="precio" id="precio" class="form__input" placeholder="E.g. 30000">
+                    <label for="price" class="form__label">Precio</label>
+                    <input type="number" name="price" id="price" class="form__input" placeholder="E.g. 30000" data-validate="required" min="0">
                 </div>
                 <div class="form__buttons">
                     <button type="submit" class="form__submit">Crear Servicio <i class="ri-add-line"></i></button>
@@ -128,6 +128,7 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/servicios/agregar.js" type="module"></script>
 </body>

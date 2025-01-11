@@ -18,3 +18,41 @@ export function validateInput(e){
         Alert.clearInputAlert(input);
     }
 }
+
+export function validateForm(){
+    let isValid = true;
+    const inputsToValidate = document.querySelectorAll("input[data-validate]");
+    
+    inputsToValidate.forEach(input => {
+        const config = validationFormConfig[input.dataset.validate];
+        if (!config.validate(input.value)) {
+            isValid = false;
+        }
+    })
+
+    return isValid;
+}
+
+export function sendForm(e, functionToExecute){
+    e.preventDefault();
+    const isValid = validateForm();
+
+    if (!isValid) {
+        Alert.showStatusAlert("error", "¡Error!", "Por favor, corrige los errores antes de enviar el formulario.")
+        return;
+    }
+
+    functionToExecute();
+}
+
+export function getFormData() {
+    return Object.fromEntries(new FormData(form))
+}
+
+export function reloadPage() {
+    window.location.reload();
+}
+
+export function goToControlPage() {
+    window.location.href = "./control.html";
+}

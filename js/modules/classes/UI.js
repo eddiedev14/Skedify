@@ -13,10 +13,10 @@ class UI{
 
         this.updateProfileAvatar(profileAvatar, avatar);
         document.querySelector(`.modal__figure:has(img[data-src='${avatar}'])`).classList.add("modal__figure--selected")
-        document.querySelector("input#nombre").value = name;
+        document.querySelector("input#name").value = name;
         document.querySelector("input#email").value = email;
-        document.querySelector("input#telefono").value = phone;
-        document.querySelector("input#rol").value = role;
+        document.querySelector("input#phone").value = phone;
+        document.querySelector("input#role").value = role;
     }
 
     updateProfileAvatar(element, avatar){

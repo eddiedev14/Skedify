@@ -15,8 +15,12 @@ class Alert{
         }
     }
 
-    showStatusAlert(type, title, message){
-        Swal.fire(title, message, type);
+    showStatusAlert(type, title, message, callback = null){
+        Swal.fire(title, message, type).then(() => {
+            if (callback) {
+                callback();
+            }
+        });
     }
 }
 

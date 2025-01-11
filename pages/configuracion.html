@@ -97,7 +97,7 @@
                 <h1 class="header__heading">Configuración - <span>Skedify</span></h1>
             </div>
             <div class="header__group">
-                <img src="" alt="Avatar" class="header__avatar">
+                <a href="/pages/configuracion.html"><img src="/assets/avatars/default-user.svg" alt="Avatar" class="header__avatar"></a>
                 <div class="header__profile">
                     <p class="profile__user"></p>
                     <span class="profile__role"></span>
@@ -110,27 +110,27 @@
             <div class="profile__container">
                 <h3 class="container__heading">Información del Perfil</h3>
                 <button type="button" class="profile__wrapper" aria-label="Click para cambiar la imagen de perfil" id="change-avatar">
-                    <img src="" alt="Profile Avatar" id="avatar">
+                    <img src="/assets/avatars/default-user.svg" alt="Profile Avatar" id="avatar">
                     <div class="profile__hover">
                         <i class="ri-upload-cloud-2-fill"></i>
                     </div>
                 </button>
                 <form action="#" class="form">
                     <div class="form__group">
-                        <label for="nombre" class="form__label">Nombre *</label>
-                        <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López" data-validate="required">
+                        <label for="name" class="form__label">Nombre *</label>
+                        <input type="text" id="name" name="name" class="form__input" placeholder="E.g. Marcos López" data-validate="required">
                     </div>
                     <div class="form__group">
                         <label for="email" class="form__label">Email</label>
                         <input type="text" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com" data-validate="email">
                     </div>
                     <div class="form__group">
-                        <label for="telefono" class="form__label">Telefono</label>
-                        <input type="tel" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421" data-validate="phone">
+                        <label for="phone" class="form__label">Telefono</label>
+                        <input type="tel" name="phone" id="phone" class="form__input" placeholder="E.g. 3234323421" data-validate="phone">
                     </div>
                     <div class="form__group">
-                        <label for="rol" class="form__label">Rol</label>
-                        <input type="text" name="rol" id="rol" class="form__input" placeholder="E.g. Emprendedor">
+                        <label for="role" class="form__label">Rol</label>
+                        <input type="text" name="role" id="role" class="form__input" placeholder="E.g. Emprendedor">
                     </div>
                     <div class="form__buttons">
                         <button type="submit" class="form__submit">Actualizar Perfil</button>
