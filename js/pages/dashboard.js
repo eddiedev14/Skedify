@@ -1,3 +1,3 @@
-import { toggleTabIndex } from "../modules/components/sidebar.js";
+import { toggleTabIndex } from "../modules/components/Sidebar.js";
 
 document.addEventListener("DOMContentLoaded", toggleTabIndex)
