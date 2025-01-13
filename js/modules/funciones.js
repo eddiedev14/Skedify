@@ -1,6 +1,9 @@
 import { validationFormConfig } from "./variables.js";
 import { form } from "./selectores.js";
 import Alert from "./components/Alert.js";
+import { createTableInstance } from "./components/Datatables.js";
+import { hideSpinnerSection } from "./components/Spinner.js";
+import DB from "./classes/DB.js";
 
 export function validateInput(e){
     //Input Information
@@ -43,6 +46,16 @@ export function sendForm(e, functionToExecute){
     }
 
     functionToExecute();
+}
+
+//Function to show the records in the datatable
+export function showRecords(objectStore) {
+    DB.getRecords(objectStore)
+        .then(records => {
+            createTableInstance(records);
+            hideSpinnerSection();
+        })
+        .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
 }
 
 export function getFormData() {

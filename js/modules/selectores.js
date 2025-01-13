@@ -12,6 +12,9 @@ export const headerProfileRole = document.querySelector(".profile__role");
 //* Form
 export const form = document.querySelector(".form")
 
+//* Tables
+export const loadingContainer = document.querySelector(".main__loading")
+
 //* Profile Form
 export const profileAvatar = document.querySelector("#avatar")
 

@@ -4,10 +4,13 @@ import Alert from "../components/Alert.js";
 class DB{
     #db;
 
-    constructor(){
-        this.openDB()
-            .then(res => this.#db = res)
-            .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
+    //Function to initializate the database
+    async init() {
+        try {
+            this.#db = await this.openDB();  // Wait until the database is ready
+        } catch (error) {
+            Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage);
+        }
     }
 
     openDB(){
@@ -33,7 +36,8 @@ class DB{
         })
     }
 
-    addRegister(objectStore){
+    async addRegister(objectStore){
+        if (!this.#db) await this.init();
         const formData = getFormData();
 
         const register = {
@@ -41,12 +45,24 @@ class DB{
             ...formData
         }
 
-        const transtaction = this.#db.transaction(objectStore, "readwrite");
-        const objectStoreElement = transtaction.objectStore(objectStore);
+        const transaction = this.#db.transaction(objectStore, "readwrite");
+        const objectStoreElement = transaction.objectStore(objectStore);
         const request = objectStoreElement.add(register);
 
         request.onsuccess = () => Alert.showStatusAlert("success", "¡Felicitaciones!", "El servicio ha sido creado correctamente", goToControlPage)
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error agregando el registro", reloadPage);
+    }
+
+    async getRecords(objectStore){
+        if (!this.#db) await this.init();
+        return new Promise((resolve, reject) => {
+            const transaction = this.#db.transaction(objectStore, "readonly");
+            const objectStoreElement = transaction.objectStore(objectStore);
+            const request = objectStoreElement.getAll();
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo los registro"));
+        })
     }
 }
 
