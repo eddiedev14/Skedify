@@ -61,6 +61,12 @@
     gap: 8px;
 }
 
+#table tr td ul li:last-child span:last-child{
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+}
+
 .table__btn{
     width: 30px;
     height: 30px;

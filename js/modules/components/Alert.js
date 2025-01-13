@@ -1,3 +1,5 @@
+import DB from "../classes/DB.js";
+
 class Alert{
     showInputAlert(input, message){
         if (input.classList.contains("error")) return;
@@ -19,6 +21,21 @@ class Alert{
         Swal.fire(title, message, type).then(() => {
             if (callback) {
                 callback();
+            }
+        });
+    }
+
+    showConfirmationAlert(objectStore, id){
+        Swal.fire({
+            title: "¡Confirmación!",
+            text: "¿Está seguro de eliminar el registro seleccionado?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: `Cancelar`
+            }).then((result) => {
+            if (result.isConfirmed) {
+                DB.deleteRecord(objectStore, id)
             }
         });
     }

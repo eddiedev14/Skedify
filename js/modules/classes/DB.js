@@ -1,5 +1,6 @@
 import { getFormData, goToControlPage, reloadPage } from "../funciones.js";
 import Alert from "../components/Alert.js";
+import UI from "./UI.js";
 
 class DB{
     #db;
@@ -49,7 +50,7 @@ class DB{
         const objectStoreElement = transaction.objectStore(objectStore);
         const request = objectStoreElement.add(register);
 
-        request.onsuccess = () => Alert.showStatusAlert("success", "¡Felicitaciones!", "El servicio ha sido creado correctamente", goToControlPage)
+        request.onsuccess = () => Alert.showStatusAlert("success", "¡Felicitaciones!", "El registro ha sido creado correctamente", goToControlPage)
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error agregando el registro", reloadPage);
     }
 
@@ -63,6 +64,46 @@ class DB{
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo los registro"));
         })
+    }
+
+    async getRecord(objectStore, id){
+        if (!this.#db) await this.init();
+        return new Promise((resolve, reject) => {
+            const transaction = this.#db.transaction(objectStore, "readonly");
+            const objectStoreElement = transaction.objectStore(objectStore);
+            const request = objectStoreElement.get(id);
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo el registro con esa ID"));
+        })
+    }
+
+    async editRecord(objectStore, id){
+        const formData = getFormData();
+        
+        const newRegister = {
+            id,
+            ...formData
+        }
+
+        const transaction = this.#db.transaction(objectStore, "readwrite");
+        const objectStoreElement = transaction.objectStore(objectStore);
+        const request = objectStoreElement.put(newRegister);
+
+        request.onsuccess = () => Alert.showStatusAlert("success", "¡Felicitaciones!", "El registro ha sido actualizado correctamente", goToControlPage)
+        request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
+    }
+
+    async deleteRecord(objectStore, id){
+        const transaction = this.#db.transaction(objectStore, "readwrite");
+        const objectStoreElement = transaction.objectStore(objectStore);
+        const request = objectStoreElement.delete(id);
+
+        request.onsuccess = () => {
+            UI.removeTableRow(id);
+            Alert.showStatusAlert("success", "¡Felicitaciones!", "El registro ha sido eliminado correctamente", reloadPage);
+        }
+        request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
     }
 }
 
