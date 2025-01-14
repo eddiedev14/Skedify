@@ -118,11 +118,11 @@
                 <form action="#" class="form">
                     <div class="form__group">
                         <label for="name" class="form__label">Nombre *</label>
-                        <input type="text" id="name" name="name" class="form__input" placeholder="E.g. Marcos López" data-validate="required">
+                        <input type="text" id="name" name="name" class="form__input" placeholder="E.g. Marcos López" data-required="true">
                     </div>
                     <div class="form__group">
                         <label for="email" class="form__label">Email</label>
-                        <input type="text" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com" data-validate="email">
+                        <input type="email" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com" data-validate="email">
                     </div>
                     <div class="form__group">
                         <label for="phone" class="form__label">Telefono</label>
@@ -133,7 +133,7 @@
                         <input type="text" name="role" id="role" class="form__input" placeholder="E.g. Emprendedor">
                     </div>
                     <div class="form__buttons">
-                        <button type="submit" class="form__submit">Actualizar Perfil</button>
+                        <button type="submit" class="form__submit" data-action="update-profile">Actualizar Perfil</button>
                     </div>
                 </form>
             </div>

@@ -19,7 +19,7 @@ export const validationFormConfig = {
       validate: (value) => value === "" || phoneRegex.test(value),
       message: '¡Formato de telefono inválido!'
     }
-  };
+};
 
 const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const phoneRegex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;

@@ -1,4 +1,4 @@
-import { formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, profileAvatar } from "../selectores.js";
+import { emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, profileAvatar } from "../selectores.js";
 import { goToControlPage, reloadPage } from "../funciones.js";
 import LocalStorage from "./LocalStorage.js";
 import DB from "./DB.js";
@@ -37,6 +37,24 @@ class UI{
 
     showRecordInfo(info){
         inputs.forEach(input => input.value = info[input.name])
+    }
+
+    createSelectOptions(records, select){
+        const fragment = document.createDocumentFragment();
+
+        records.forEach(record => {
+            const { id, nombre } = record;
+            const option = document.createElement("OPTION");
+            option.value = id;
+            option.textContent = nombre;
+            fragment.appendChild(option);
+        })
+
+        select.appendChild(fragment)
+    }
+
+    showRecordsNotFoundDiv(){
+        emptyContainer.classList.add("show")
     }
 
     removeTableRow(id){

@@ -110,24 +110,25 @@
             <form action="#" class="form">
                 <div class="form__group">
                     <label for="nombre" class="form__label">Nombre del Cliente</label>
-                    <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López">
+                    <input type="text" id="nombre" name="nombre" class="form__input" placeholder="E.g. Marcos López" data-required="true">
                 </div>
                 <div class="form__group">
                     <label for="email" class="form__label">Email</label>
-                    <input type="email" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com">
+                    <input type="email" id="email" name="email" class="form__input" placeholder="E.g. marcoslopez14@gmail.com" data-validate="email" data-required="true">
                 </div>
                 <div class="form__group">
                     <label for="telefono" class="form__label">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421">
+                    <input type="number" name="telefono" id="telefono" class="form__input" placeholder="E.g. 3234323421" data-validate="phone" data-required="true">
                 </div>
                 <div class="form__buttons">
-                    <button type="submit" class="form__submit">Crear Cliente <i class="ri-add-line"></i></button>
+                    <button type="submit" class="form__submit" data-action="create">Crear Cliente <i class="ri-add-line"></i></button>
                     <a href="control.html" class="form__return">Regresar</a>
                 </div>
             </form>
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/clientes/agregar.js" type="module"></script>
 </body>

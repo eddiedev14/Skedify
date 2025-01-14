@@ -105,6 +105,13 @@ class DB{
         }
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
     }
+
+    async getRecordsByIds(objectStore, ids){
+        const records = await this.getRecords(objectStore);
+        return records
+            .filter(record => ids.includes(record.id))
+            .map(record => ([record.id, record.nombre])); // We return an array where each position is an array with the id and the name
+    }
 }
 
 export default new DB();

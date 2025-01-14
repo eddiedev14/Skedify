@@ -89,7 +89,7 @@
 
 /* Spinner */
 
-.main__loading{
+.main__loading, .main__empty{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,8 +156,24 @@
     } 
 }
 
-.loading__message{
-    font-size: 1.125em;
+.loading__message, .empty__message{
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Empty */
+
+.main__empty{
+    display: none;
+    gap: 16px;
+}
+
+.main__empty.show{
+    display: flex;
+}
+
+.main__empty img{
+    width: 200px;
 }
 
 @container main (min-width: 400px){
@@ -181,5 +197,9 @@
 
     .main__action span{
         width: auto;
+    }
+
+    .loading__message, .empty__message{
+        font-size: 1.125em;
     }
 }

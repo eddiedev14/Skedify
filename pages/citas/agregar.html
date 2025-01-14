@@ -109,29 +109,30 @@
             <h3 class="container__heading">Crear Cita</h3>
             <form action="#" class="form">
                 <div class="form__group">
-                    <label for="client" class="form__label">Cliente</label>
-                    <select name="client" id="client" class="form__input form__input--select">
+                    <label for="cliente" class="form__label">Cliente</label>
+                    <select name="cliente" id="cliente" class="form__input form__input--select" data-required="true">
                         <option value="" selected disabled>Selecciona una opción</option>
                     </select>
                 </div>
                 <div class="form__group">
                     <label for="servicio" class="form__label">Servicio</label>
-                    <select name="servicio" id="servicio" class="form__input form__input--select">
+                    <select name="servicio" id="servicio" class="form__input form__input--select" data-required="true">
                         <option value="" selected disabled>Selecciona una opción</option>
                     </select>
                 </div>
                 <div class="form__group">
                     <label for="fecha" class="form__label">Fecha y Hora</label>
-                    <input type="datetime-local" name="fecha" id="fecha" class="form__input form__input--datetime">
+                    <input type="datetime-local" name="fecha" id="fecha" class="form__input form__input--datetime" data-required="true">
                 </div>
                 <div class="form__buttons">
-                    <button type="submit" class="form__submit">Crear Cita <i class="ri-add-line"></i></button>
+                    <button type="submit" class="form__submit" data-action="create">Crear Cita <i class="ri-add-line"></i></button>
                     <a href="control.html" class="form__return">Regresar</a>
                 </div>
             </form>
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/citas/agregar.js" type="module"></script>
 </body>

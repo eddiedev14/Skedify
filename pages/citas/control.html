@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
+    <link rel="stylesheet" href="/css/lib/datatables.min.css" />
     <link rel="stylesheet" href="/css/pages/control.css">
 
     <!-- Favicon -->
@@ -113,8 +114,28 @@
                     <a href="agregar.html" class="main__action"><span>Crear Cita</span> <i class="ri-add-line"></i></a>
                 </div>
             </div>
+            <div class="main__loading">
+                <div class="sk-chase">
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                </div>
+                <p class="loading__message">Obteniendo los registros...</p>
+            </div>
+            <div class="main__empty">
+                <img src="/assets/svg/empty-illustration.svg" alt="Not Found Records Illustration">
+                <p class="empty__message">No se encontraron registros para esta sección...</p>
+            </div>
+            <table id="table"></table>
         </main>
     </div>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/lib/datatables.min.js"></script>
 
     <script src="/js/main.js" type="module"></script>
     <script src="/js/pages/citas/control.js" type="module"></script>

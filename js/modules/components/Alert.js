@@ -2,9 +2,12 @@ import DB from "../classes/DB.js";
 
 class Alert{
     showInputAlert(input, message){
-        if (input.classList.contains("error")) return;
-        input.classList.add("error");
+        if (!input.classList.contains("error")){
+            input.classList.add("error");
+        }
         
+        const previousSpan = input.nextElementSibling;
+        if (previousSpan) previousSpan.remove();
         const span = document.createElement("SPAN");
         span.textContent = message;
         input.parentElement.appendChild(span);
