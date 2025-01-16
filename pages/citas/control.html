@@ -10,7 +10,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/lib/datatables.min.css" />
-    <link rel="stylesheet" href="/css/pages/control.css">
+    <link rel="stylesheet" href="/css/pages/controlCitas.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
@@ -132,6 +132,32 @@
             <table id="table"></table>
         </main>
     </div>
+
+    <dialog class="modal" id="state-modal">
+        <div class="modal__container">
+            <section class="modal__card">
+            <header class="modal__header">
+                <h3 class="modal__heading">Actualizar Estado</h3>
+                <button type="button" class="modal__close"><i class="ri-close-line"></i></button>
+            </header>
+            <form class="modal__form">
+                <div class="form__group">
+                    <label for="estado" class="form__label">Estado</label>
+                    <select name="estado" id="estado" class="form__input form__input--select form__input--modal"> 
+                        <option value="Cancelada">Cancelada</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Confirmada">Confirmada</option>
+                        <option value="Completada">Completada</option>
+                    </select>
+                </div>
+            </form>
+            <footer class="modal__footer">
+                <button type="button" class="modal__button modal__button--close">Cancelar</button>
+                <button type="button" class="modal__button modal__button--primary" id="update-state">Guardar Cambios</button>
+            </footer>
+        </section>
+        </div>
+    </dialog>
 
     <!-- Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

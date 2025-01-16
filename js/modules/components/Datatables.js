@@ -1,4 +1,4 @@
-import { formatColumnTitle } from "../funciones.js";
+import { formatTitle } from "../funciones.js";
 import UI from "../classes/UI.js";
 
 export function createTableInstance(records) {
@@ -8,8 +8,13 @@ export function createTableInstance(records) {
     }
 
     const columns = Object.keys(records[0]).map(key => ({
-        title: formatColumnTitle(key),
-        data: key
+        title: formatTitle(key),
+        data: key,
+        render: key === "estado" 
+                ? function(data, _, row) {
+                    return `<button class="table__status table__status--${data.toLowerCase()}" data-id="${row.id}">${data}</button>`;
+                }
+                : undefined
     }))
 
     //Pushing the "Actions" column

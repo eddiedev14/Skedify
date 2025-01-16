@@ -67,6 +67,39 @@
     gap: 8px;
 }
 
+.table__status{
+    width: min-content;
+    padding: 4px 12px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.table__status--cancelada{
+    border-color: var(--red);
+    color: var(--red);
+    background-color: var(--light-red-status);
+}
+
+.table__status--pendiente{
+    border-color: var(--orange-status);
+    color: var(--orange-status-text-color);
+    background-color: var(--light-orange-status);
+}
+
+.table__status--confirmada{
+    border-color: var(--blue);
+    color: var(--blue);
+    background-color: var(--light-blue-status);
+}
+
+.table__status--completada{
+    border-color: var(--green-status);
+    color: var(--green-status);
+    background-color: var(--light-green-status);
+}
+
 .table__btn{
     width: 30px;
     height: 30px;
@@ -174,6 +207,44 @@
 
 .main__empty img{
     width: 200px;
+}
+
+/* Modal Form */
+
+.form__group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form__label{
+    font-weight: 500;
+    font-size: 0.875em;
+    color: var(--dark-gray);
+}
+
+.form__input{
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #FDFCFC;
+    border: 1px solid #B6B6B6;
+    border-radius: 4px;
+    font-size: 0.875em;
+    font-weight: 300;
+    transition: .3s ease-in-out border-color;
+}
+
+.form__input--select{
+    appearance: none;
+    background-image: url('../../assets/svg/chevron-down.svg');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+.form__input:focus-visible{
+    outline: none;
+    border-color: var(--primary);
 }
 
 @container main (min-width: 400px){

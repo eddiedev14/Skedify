@@ -124,6 +124,15 @@
                     <label for="fecha" class="form__label">Fecha y Hora</label>
                     <input type="datetime-local" name="fecha" id="fecha" class="form__input form__input--datetime" data-required="true">
                 </div>
+                <div class="form__group form__group--hidden">
+                    <label for="estado" class="form__label">Estado</label>
+                    <select name="estado" id="estado" class="form__input form__input--select" readonly data-required="true"> 
+                        <option value="Cancelada">Cancelada</option>
+                        <option value="Pendiente" selected>Pendiente</option>
+                        <option value="Confirmada">Confirmada</option>
+                        <option value="Completada">Completada</option>
+                    </select>
+                </div>
                 <div class="form__buttons">
                     <button type="submit" class="form__submit" data-action="create">Crear Cita <i class="ri-add-line"></i></button>
                     <a href="control.html" class="form__return">Regresar</a>

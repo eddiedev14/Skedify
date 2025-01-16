@@ -17,8 +17,10 @@
     --red: #DE5753;
 
     --green-status: #008767;
-    --light-green-status: rgba(22, 192, 152, 0.38);
     --orange-status: #F78E2B;
+    --green-status: #008767;
+    --orange-status-text-color: #D07621;
+    --light-green-status: rgba(22, 192, 152, 0.38);
     --light-orange-status: rgba(247, 142, 43, 0.38);
     --light-blue-status: rgba(35, 129, 237, 0.38);
     --light-red-status: rgba(222, 87, 83, 0.38);
@@ -29,6 +31,11 @@
     --pale-gray: #9197B3;
 
     --calendar-gradient: linear-gradient(to bottom, #FE783D, #E25618);
+    --calendar--appointment-text-color: #836942;
+    --calendar-green-status: #DEFFD2;
+    --calendar-blue-status: #EEECFD;
+    --calendar-orange-status: #FCEEDF;
+    --calendar-red-status: #FCDFDF;
 }
 
 *{
@@ -39,11 +46,11 @@
 
 body{
     background-color: var(--background);
-    font-family: "Figtree", serif;
+    font-family: "Figtree", Arial, sans-serif;
 }
 
 input, label, button, select{
-    font-family: "Figtree", serif;
+    font-family: "Figtree", Arial, sans-serif;
 }
 
 .wrapper{

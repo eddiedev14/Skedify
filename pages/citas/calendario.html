@@ -108,7 +108,11 @@
         <main class="container main">
             <section class="calendar">
                 <header class="calendar__header">
-                    <h3 class="container__heading" id="calendar-date">Enero 2025</h3>
+                    <div class="header__container">
+                        <button class="calendar__button calendar__button--previous"><i class="ri-arrow-left-s-line"></i></button>
+                        <h3 class="container__heading" id="calendar-date"></h3>
+                        <button class="calendar__button calendar__button--next"><i class="ri-arrow-right-s-line"></i></button>
+                    </div>
                 </header>
                 
                 <!-- Días de la semana -->
@@ -125,11 +129,17 @@
                 <!-- Días del mes -->
                 <ol class="calendar__days">
                     <li class="calendar__day" data-day="1">
-                        <div class="day__info">
+                        <div class="day__info"><h5>1</h5></div>
+                        <!-- <div class="day__info">
                             <h5>1</h5>
                             <button><i class="ri-information-2-fill"></i></button>
                         </div>
-                        <ul class="calendar__appointments"></ul>
+                        <ul class="calendar__appointments">
+                            <li class="appointment__completed"><i class="ri-checkbox-circle-fill"></i> Proyecto Web</li>
+                            <li class="appointment__confirmed"><i class="ri-check-fill"></i> Consultoría SEO</li>
+                            <li class="appointment__pending"><i class="ri-hourglass-fill"></i> Dropshipping</li>
+                            <li class="appointment__canceled"><i class="ri-close-circle-fill"></i> Consultoría SEO</li>
+                        </ul> -->
                     </li>
                     <li class="calendar__day" data-day="2">
                         <div class="day__info"><h5>2</h5></div>

@@ -1,5 +1,5 @@
-import { form, modalBtn, modalCancelBtn, modalCloseBtn, modalMain, modalSubmitBtn } from "../modules/selectores.js";
-import { sendForm, validateForm, validateInput } from "../modules/funciones.js";
+import { form, modalCancelBtn, modalCloseBtn, modalMain, modalProfileBtn, modalProfileSubmitBtn } from "../modules/selectores.js";
+import { sendForm, validateInput } from "../modules/funciones.js";
 import { closeModal, openModal, selectAvatar } from "../modules/components/Modal.js";
 import LocalStorage from "../modules/classes/LocalStorage.js";
 import UI from "../modules/classes/UI.js";
@@ -14,11 +14,11 @@ const phoneInput = document.querySelector("#phone");
 document.addEventListener("DOMContentLoaded", UI.showFormUserInfo)
 
 //Modal
-modalBtn.addEventListener("click", openModal);
+modalProfileBtn.addEventListener("click", openModal);
 modalMain.addEventListener("click", selectAvatar)
 modalCloseBtn.addEventListener("click", closeModal);
 modalCancelBtn.addEventListener("click", closeModal);
-modalSubmitBtn.addEventListener("click", LocalStorage.updateAvatar)
+modalProfileSubmitBtn.addEventListener("click", LocalStorage.updateAvatar)
 
 //Form
 form.addEventListener("submit", (e) => sendForm(e, LocalStorage.updateProfile))

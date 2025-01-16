@@ -1,4 +1,4 @@
-import { emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, profileAvatar } from "../selectores.js";
+import { appointmentStateContainer, emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, modalAppointmentSubmitBtn, profileAvatar } from "../selectores.js";
 import { goToControlPage, reloadPage } from "../funciones.js";
 import LocalStorage from "./LocalStorage.js";
 import DB from "./DB.js";
@@ -35,8 +35,23 @@ class UI{
             .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, goToControlPage))
     }
 
+    showRecordModal(id){
+        DB.getRecord("appointments", id)
+            .then(info => {
+                this.showRecordInfo(info);
+                modalAppointmentSubmitBtn.dataset.id = id;
+            })
+            .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, goToControlPage))
+    }
+
     showRecordInfo(info){
         inputs.forEach(input => input.value = info[input.name])
+
+        //Show the appointment state input if the user is in that editing section
+        if (appointmentStateContainer) {
+            appointmentStateContainer.classList.remove("form__group--hidden");
+            appointmentStateContainer.querySelector("select").removeAttribute("readonly");
+        }
     }
 
     createSelectOptions(records, select){

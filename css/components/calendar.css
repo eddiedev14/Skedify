@@ -15,8 +15,34 @@
 .calendar__header{
     background-image: var(--calendar-gradient);
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.calendar__button{
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #FE783D;
     display: grid;
     place-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s ease-in-out scale;
+}
+
+.calendar__button:hover, .calendar__button:focus{
+    scale: 1.05;
 }
 
 .calendar__weekdays, .calendar__days{
@@ -54,6 +80,10 @@
     border: 1px solid #E6E6E6;
 }
 
+.calendar__day--hidden{
+    display: none;
+}
+
 .day__info{
     display: flex;
     align-items: center;
@@ -62,6 +92,8 @@
 
 .day__info h5{
     font-size: 0.9375em;
+    color: var(--dark-gray);
+    transition: .3s ease-in-out color;
 }
 
 .day__info button{
@@ -82,12 +114,17 @@
 .calendar__day:has(ul.calendar__appointments):hover,
 .calendar__day:has(.day__info button:focus) {
     background-color: #FE783D;
+}
+
+.calendar__day:has(ul.calendar__appointments):hover .day__info h5,
+.calendar__day:has(.day__info button:focus) .day__info h5,
+.calendar__day:has(ul.calendar__appointments):hover .day__info button,
+.calendar__day:has(.day__info button:focus) .day__info button  {
     color: #fff;
 }
 
-.calendar__day:has(ul.calendar__appointments):hover .day__info button,
-.calendar__day:has(.day__info button:focus) .day__info button {
-    color: #fff;
+.calendar__appointments{
+    display: none;
 }
 
 @container main (min-width: 400px){
@@ -97,6 +134,10 @@
 }
 
 @container main (min-width: 500px){
+    .calendar__header{
+        padding: 0 48px;
+    }
+    
     .calendar__day{
         aspect-ratio: 1/1;
         padding: 10px 16px;
@@ -109,9 +150,22 @@
     .day__info button{
         font-size: 1.25em;
     }
+
+    .calendar__button{
+        width: 28px;
+        height: 28px;
+        font-size: 24px;
+    }
 }
 
 @container main (min-width: 874px){
+    .calendar__day{
+        min-height: 150px;
+        max-height: none;
+        aspect-ratio: auto;
+        gap: 20px;
+    }
+
     .container__heading{
         color: #fff;
         font-size: 1.5em;
@@ -137,5 +191,87 @@
     
     .day__info button{
         display: none;
+    }
+
+    .calendar__day:has(ul.calendar__appointments), 
+    .calendar__day:has(.day__info button) {
+        cursor: auto;
+        transition: none;
+    }
+
+    .calendar__day:has(ul.calendar__appointments):hover,
+    .calendar__day:has(.day__info button:focus) {
+        background-color: initial;
+    }
+
+    .calendar__day:has(ul.calendar__appointments):hover .day__info h5,
+    .calendar__day:has(.day__info button:focus) .day__info h5,
+    .calendar__day:has(ul.calendar__appointments):hover .day__info button,
+    .calendar__day:has(.day__info button:focus) .day__info button  {
+        color: initial;
+    }
+
+    .calendar__appointments{
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        list-style: none;
+    }
+
+    .calendar__appointments li{
+        max-width: 100px;
+        padding: 4px 8px;
+        font-size: 0.75em;
+        color: var(--calendar--appointment-text-color);
+        border-radius: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+    }
+
+    .appointment__completed{
+        background-color: var(--calendar-green-status);
+    }
+
+    .appointment__completed i{
+        color: var(--green);
+    }
+
+    .appointment__confirmed{
+        background-color: var(--calendar-blue-status);
+    }
+
+    .appointment__confirmed i{
+        color: var(--blue);
+    }
+
+    .appointment__pending{
+        background-color: var(--calendar-orange-status);
+    }
+
+    .appointment__pending i{
+        color: var(--orange);
+    }
+
+    .appointment__canceled{
+        background-color: var(--calendar-red-status);
+    }
+
+    .appointment__canceled i{
+        color: var(--red);
+    }
+
+    .calendar__button{
+        width: 32px;
+        height: 32px;
+        font-size: 28px;
+    }
+}
+
+@container main (min-width: 1080px){
+    .calendar__appointments li{
+        max-width: 120px;
+        font-size: 0.875em;
     }
 }

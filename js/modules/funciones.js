@@ -1,6 +1,7 @@
 import { validationFormConfig } from "./variables.js";
-import { clientInput, form, formSubmit, inputs, serviceInput } from "./selectores.js";
+import { clientInput, form, formSubmit, inputs, modal, serviceInput } from "./selectores.js";
 import Alert from "./components/Alert.js";
+import { openModal } from "./components/Modal.js";
 import { createTableInstance } from "./components/Datatables.js";
 import { hideSpinnerSection } from "./components/Spinner.js";
 import LocalStorage from "./classes/LocalStorage.js";
@@ -154,7 +155,8 @@ export function showAppointmentsRecords() {
                     id: app.id,
                     cliente: clientMap[app.cliente],
                     servicio: serviceMap[app.servicio],
-                    fecha: app.fecha.split("T").join(" ")
+                    fecha: app.fecha.split("T").join(" "),
+                    estado: app.estado
                 }))
 
                 createTableInstance(detailedAppointments);
@@ -175,6 +177,10 @@ export function setTableEventsListeners(e, objectStore) {
     }else if(button.classList.contains("table__btn--delete")){
         Alert.showConfirmationAlert(objectStore, id)
     }
+    else if (button.classList.contains("table__status")) {
+        openModal();
+        UI.showRecordModal(id);
+    }
 }
 
 //Function to go to edit page
@@ -194,6 +200,6 @@ export function goToControlPage() {
     window.location.href = "./control.html";
 }
 
-export function formatColumnTitle(title){
+export function formatTitle(title){
     return title.charAt(0).toUpperCase() + title.slice(1).replace(/_/g, ' ');
 }

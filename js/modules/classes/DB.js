@@ -1,6 +1,7 @@
 import { getFormData, goToControlPage, reloadPage } from "../funciones.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
+import { modalAppointmentStateInput } from "../selectores.js";
 
 class DB{
     #db;
@@ -104,6 +105,22 @@ class DB{
             Alert.showStatusAlert("success", "¡Felicitaciones!", "El registro ha sido eliminado correctamente", reloadPage);
         }
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
+    }
+
+    async updateState(id){
+        const estado = modalAppointmentStateInput.value;
+
+        this.getRecord("appointments", id)
+            .then(info => {
+                const updatedAppointment = {...info, estado};
+                const transaction = this.#db.transaction("appointments", "readwrite");
+                const objectStoreElement = transaction.objectStore("appointments");
+                const request = objectStoreElement.put(updatedAppointment);
+
+                request.onsuccess = () => Alert.showStatusAlert("success", "¡Felicitaciones!", "El estado de la cita ha sido actualizado correctamente", reloadPage)
+                request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el estado de la cita", reloadPage); 
+            })
+            .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
     }
 
     async getRecordsByIds(objectStore, ids){
