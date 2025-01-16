@@ -106,11 +106,127 @@
         </header>
 
         <main class="container main">
+            <section class="calendar">
+                <header class="calendar__header">
+                    <h3 class="container__heading" id="calendar-date">Enero 2025</h3>
+                </header>
+                
+                <!-- Días de la semana -->
+                <section class="calendar__weekdays">
+                    <div class="calendar__weekday"><h4>Lunes</h4><abbr>Lun</abbr></div>
+                    <div class="calendar__weekday"><h4>Martes</h4><abbr>Mar</abbr></div>
+                    <div class="calendar__weekday"><h4>Miércoles</h4><abbr>Mié</abbr></div>
+                    <div class="calendar__weekday"><h4>Jueves</h4><abbr>Jue</abbr></div>
+                    <div class="calendar__weekday"><h4>Viernes</h4><abbr>Vie</abbr></div>
+                    <div class="calendar__weekday"><h4>Sábado</h4><abbr>Sáb</abbr></div>
+                    <div class="calendar__weekday"><h4>Domingo</h4><abbr>Dom</abbr></div>
+                </section>
             
+                <!-- Días del mes -->
+                <ol class="calendar__days">
+                    <li class="calendar__day" data-day="1">
+                        <div class="day__info">
+                            <h5>1</h5>
+                            <button><i class="ri-information-2-fill"></i></button>
+                        </div>
+                        <ul class="calendar__appointments"></ul>
+                    </li>
+                    <li class="calendar__day" data-day="2">
+                        <div class="day__info"><h5>2</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="3">
+                        <div class="day__info"><h5>3</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="4">
+                        <div class="day__info"><h5>4</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="5">
+                        <div class="day__info"><h5>5</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="6">
+                        <div class="day__info"><h5>6</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="7">
+                        <div class="day__info"><h5>7</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="8">
+                        <div class="day__info"><h5>8</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="9">
+                        <div class="day__info"><h5>9</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="10">
+                        <div class="day__info"><h5>10</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="11">
+                        <div class="day__info"><h5>11</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="12">
+                        <div class="day__info"><h5>12</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="13">
+                        <div class="day__info"><h5>13</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="14">
+                        <div class="day__info"><h5>14</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="15">
+                        <div class="day__info"><h5>15</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="16">
+                        <div class="day__info"><h5>16</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="17">
+                        <div class="day__info"><h5>17</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="18">
+                        <div class="day__info"><h5>18</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="19">
+                        <div class="day__info"><h5>19</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="20">
+                        <div class="day__info"><h5>20</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="21">
+                        <div class="day__info"><h5>21</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="22">
+                        <div class="day__info"><h5>22</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="23">
+                        <div class="day__info"><h5>23</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="24">
+                        <div class="day__info"><h5>24</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="25">
+                        <div class="day__info"><h5>25</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="26">
+                        <div class="day__info"><h5>26</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="27">
+                        <div class="day__info"><h5>27</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="28">
+                        <div class="day__info"><h5>28</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="29">
+                        <div class="day__info"><h5>29</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="30">
+                        <div class="day__info"><h5>30</h5></div>
+                    </li>
+                    <li class="calendar__day" data-day="31">
+                        <div class="day__info"><h5>31</h5></div>
+                    </li>
+                </ol>
+            </section>
         </main>
     </div>
 
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/pages/citas/control.js" type="module"></script>
+    <script src="/js/pages/citas/calendario.js" type="module"></script>
 </body>
 </html>

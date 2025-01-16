@@ -12,7 +12,7 @@ export const headerProfileRole = document.querySelector(".profile__role");
 //* Form
 export const form = document.querySelector(".form")
 export const formHeading = document.querySelector(".container__heading");
-export const inputs = document.querySelectorAll(".form input");
+export const inputs = document.querySelectorAll(".form input, .form select");
 export const formSubmit = document.querySelector(".form__submit");
 export const clientInput = document.querySelector("#cliente");
 export const serviceInput = document.querySelector("#servicio");

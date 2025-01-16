@@ -1,5 +1,141 @@
 .main{
-    height: 80vh; /* Temporal */
-    container-type: inline-size;
+    overflow: hidden;
+    border-radius: 60px 60px 0 0;
+    padding: 0;
     container-name: main;
+    container-type: inline-size;
+}
+
+.container__heading{
+    color: #fff;
+    font-size: 1.25em;
+}
+
+/* Calendar */
+.calendar__header{
+    background-image: var(--calendar-gradient);
+    height: 50px;
+    display: grid;
+    place-items: center;
+}
+
+.calendar__weekdays, .calendar__days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    place-items: center;
+}
+
+.calendar__weekday{
+    padding: 10px 0;
+}
+
+.calendar__weekday h4{
+    display: none;
+}
+
+.calendar__weekday abbr{
+    color: var(--light-gray);
+    font-size: 0.875em;
+}
+
+.calendar__days{
+    background-color: #FAFAFA;
+}
+
+.calendar__day{
+    width: 100%;
+    min-height: 64px;
+    max-height: 150px;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #E6E6E6;
+}
+
+.day__info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.day__info h5{
+    font-size: 0.9375em;
+}
+
+.day__info button{
+    background: none;
+    border: none;
+    font-size: 1.125em;
+    color: #FE783D;
+    cursor: pointer;
+    transition: .3s ease-in-out color;
+}
+
+.calendar__day:has(ul.calendar__appointments), 
+.calendar__day:has(.day__info button) {
+    cursor: pointer;
+    transition: .3s ease-in-out background-color, .3s ease-in-out color;
+}
+
+.calendar__day:has(ul.calendar__appointments):hover,
+.calendar__day:has(.day__info button:focus) {
+    background-color: #FE783D;
+    color: #fff;
+}
+
+.calendar__day:has(ul.calendar__appointments):hover .day__info button,
+.calendar__day:has(.day__info button:focus) .day__info button {
+    color: #fff;
+}
+
+@container main (min-width: 400px){
+    .calendar__day{
+        padding: 10px;
+    }
+}
+
+@container main (min-width: 500px){
+    .calendar__day{
+        aspect-ratio: 1/1;
+        padding: 10px 16px;
+    }
+
+    .day__info h5{
+        font-size: 1.125em;
+    }
+    
+    .day__info button{
+        font-size: 1.25em;
+    }
+}
+
+@container main (min-width: 874px){
+    .container__heading{
+        color: #fff;
+        font-size: 1.5em;
+    }
+
+    .calendar__weekday{
+        padding: 16px 0;
+    }
+
+    .calendar__weekday h4{
+        display: block;
+        font-weight: 400;
+        color: var(--light-gray);
+    }
+    
+    .calendar__weekday abbr{
+        display: none;
+    }
+
+    .day__info h5{
+        font-size: 1.375em;
+    }
+    
+    .day__info button{
+        display: none;
+    }
 }

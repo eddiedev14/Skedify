@@ -2,8 +2,8 @@ import { configureActionForm, sendForm, showSelectRecords, validateInput } from 
 import { clientInput, form, serviceInput } from "../../modules/selectores.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    configureActionForm("appointments")
     showSelectRecords();
+    configureActionForm("appointments");
 })
 
 //* Selectores Específicos

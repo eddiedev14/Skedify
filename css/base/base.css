@@ -27,6 +27,8 @@
     --dark-gray: #1D242E;
     --light-gray: #6D6D6D;
     --pale-gray: #9197B3;
+
+    --calendar-gradient: linear-gradient(to bottom, #FE783D, #E25618);
 }
 
 *{
