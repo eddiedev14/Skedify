@@ -3,4 +3,4 @@ import { table } from "../../modules/selectores.js";
 
 //* Eventos
 document.addEventListener("DOMContentLoaded", () => showRecords("services"));
-table.addEventListener("click", (e) => setTableEventsListeners(e, "services"));
+table.addEventListener("click", (e) => setTableEventsListeners(e, "services", "servicio"));

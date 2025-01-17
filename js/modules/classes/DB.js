@@ -95,16 +95,40 @@ class DB{
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
     }
 
-    async deleteRecord(objectStore, id){
+    async deleteRecord(objectStore, id, foreignKeyPropertie = null){
         const transaction = this.#db.transaction(objectStore, "readwrite");
         const objectStoreElement = transaction.objectStore(objectStore);
         const request = objectStoreElement.delete(id);
 
-        request.onsuccess = () => {
+        request.onsuccess = async () => {
+            if (foreignKeyPropertie) {
+                await this.deleteForeignKeyRecords(foreignKeyPropertie, id)
+            }
+
             UI.removeTableRow(id);
             Alert.showStatusAlert("success", "¡Felicitaciones!", "El registro ha sido eliminado correctamente", reloadPage);
         }
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
+    }
+
+    async deleteForeignKeyRecords(foreignKeyPropertie, idForeignKey){
+        const transaction = this.#db.transaction("appointments", "readwrite");
+        const objectStoreElement = transaction.objectStore("appointments");
+        const request = objectStoreElement.openCursor();
+
+        request.onsuccess = () => {
+            const cursor = request.result;
+
+            if (cursor) {
+                const record = cursor.value;
+                if (record[foreignKeyPropertie] === idForeignKey) {
+                    cursor.delete();
+                }
+                cursor.continue()
+            }
+        }
+
+        request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error eliminando los registros relacionados", reloadPage); 
     }
 
     async updateState(id){

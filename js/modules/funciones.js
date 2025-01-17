@@ -167,7 +167,7 @@ export function showAppointmentsRecords() {
 }
 
 //Function to set up the table event listeners
-export function setTableEventsListeners(e, objectStore) {
+export function setTableEventsListeners(e, objectStore, foreignKeyPropertie = null) {
     const button = e.target.closest("button");
     if (!button) return;
     const id = button.dataset.id;
@@ -175,7 +175,7 @@ export function setTableEventsListeners(e, objectStore) {
     if (button.classList.contains("table__btn--edit")) {
         openEdition(id)
     }else if(button.classList.contains("table__btn--delete")){
-        Alert.showConfirmationAlert(objectStore, id)
+        Alert.showConfirmationAlert(objectStore, id, foreignKeyPropertie)
     }
     else if (button.classList.contains("table__status")) {
         openModal();

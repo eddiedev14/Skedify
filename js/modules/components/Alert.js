@@ -28,7 +28,7 @@ class Alert{
         });
     }
 
-    showConfirmationAlert(objectStore, id){
+    showConfirmationAlert(objectStore, id, foreignKeyPropertie){
         Swal.fire({
             title: "¡Confirmación!",
             text: "¿Está seguro de eliminar el registro seleccionado?",
@@ -38,7 +38,7 @@ class Alert{
             cancelButtonText: `Cancelar`
             }).then((result) => {
             if (result.isConfirmed) {
-                DB.deleteRecord(objectStore, id)
+                DB.deleteRecord(objectStore, id, foreignKeyPropertie)
             }
         });
     }

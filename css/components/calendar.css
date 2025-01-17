@@ -219,46 +219,62 @@
     }
 
     .calendar__appointments li{
-        max-width: 100px;
         padding: 4px 8px;
         font-size: 0.75em;
         color: var(--calendar--appointment-text-color);
         border-radius: 12px;
-        white-space: nowrap;
+        
+    }
+
+    .calendar__appointments li button{
+        width: 100%;
+        max-width: 100px;
+        background: none;
+        border: none;
+        text-align: left;
+        display: flex;
+        gap: 4px;
         overflow: hidden;
-        text-overflow: ellipsis;
         cursor: pointer;
     }
 
-    .appointment__completed{
+    .calendar__appointments li button .appointment-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .appointment__completada{
         background-color: var(--calendar-green-status);
     }
 
-    .appointment__completed i{
+    .appointment__completada i{
         color: var(--green);
     }
 
-    .appointment__confirmed{
+    .appointment__confirmada{
         background-color: var(--calendar-blue-status);
     }
 
-    .appointment__confirmed i{
+    .appointment__confirmada i{
         color: var(--blue);
     }
 
-    .appointment__pending{
+    .appointment__pendiente{
         background-color: var(--calendar-orange-status);
     }
 
-    .appointment__pending i{
+    .appointment__pendiente i{
         color: var(--orange);
     }
 
-    .appointment__canceled{
+    .appointment__cancelada{
         background-color: var(--calendar-red-status);
     }
 
-    .appointment__canceled i{
+    .appointment__cancelada i{
         color: var(--red);
     }
 
