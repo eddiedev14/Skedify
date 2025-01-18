@@ -105,21 +105,19 @@
     transition: .3s ease-in-out color;
 }
 
-.calendar__day:has(ul.calendar__appointments), 
-.calendar__day:has(.day__info button) {
+.calendar__day--content{
     cursor: pointer;
     transition: .3s ease-in-out background-color, .3s ease-in-out color;
 }
 
-.calendar__day:has(ul.calendar__appointments):hover,
-.calendar__day:has(.day__info button:focus) {
+.calendar__day--content:hover, .calendar__day--content:focus{
     background-color: #FE783D;
 }
 
-.calendar__day:has(ul.calendar__appointments):hover .day__info h5,
-.calendar__day:has(.day__info button:focus) .day__info h5,
-.calendar__day:has(ul.calendar__appointments):hover .day__info button,
-.calendar__day:has(.day__info button:focus) .day__info button  {
+.calendar__day--content:hover .day__info h5,
+.calendar__day--content:focus .day__info h5,
+.calendar__day--content:hover .day__info button,
+.calendar__day--content:focus .day__info button{
     color: #fff;
 }
 
@@ -193,21 +191,18 @@
         display: none;
     }
 
-    .calendar__day:has(ul.calendar__appointments), 
-    .calendar__day:has(.day__info button) {
-        cursor: auto;
+    .calendar__day--content {
         transition: none;
     }
 
-    .calendar__day:has(ul.calendar__appointments):hover,
-    .calendar__day:has(.day__info button:focus) {
+    .calendar__day--content:hover, .calendar__day--content:focus {
         background-color: initial;
     }
 
-    .calendar__day:has(ul.calendar__appointments):hover .day__info h5,
-    .calendar__day:has(.day__info button:focus) .day__info h5,
-    .calendar__day:has(ul.calendar__appointments):hover .day__info button,
-    .calendar__day:has(.day__info button:focus) .day__info button  {
+    .calendar__day--content:hover .day__info h5,
+    .calendar__day--content:focus .day__info h5,
+    .calendar__day--content:hover .day__info button,
+    .calendar__day--content:focus .day__info button{
         color: initial;
     }
 

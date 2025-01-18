@@ -123,47 +123,48 @@ export function showSelectRecords(){
 
 //* Datatables Functions
 
-//Function to show the records in the datatable
-export function showRecords(objectStore) {
-    DB.getRecords(objectStore)
-        .then(records => {
-            createTableInstance(records);
-            hideSpinnerSection();
-        })
-        .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
+function displayRecordsInTable(records){
+    createTableInstance(records);
+    hideSpinnerSection();
 }
 
 //Function to show the records in the datatable
-export function showAppointmentsRecords() {
-    DB.getRecords("appointments")
-        .then(appointments => {
-            // Get all unique keys to avoid redundant searches
-            const clientIds = [...new Set(appointments.map(app => app.cliente))];
-            const serviceIds = [...new Set(appointments.map(app => app.servicio))];
-
-            //Obtaining the records by ID returns the name
-            return Promise.all([
-                DB.getRecordsByIds("clients", clientIds),
-                DB.getRecordsByIds("services", serviceIds)
-            ])
-        .then(([clients, services]) => {
-                //Create objects from the mapping of the promise responses, where the key is the id of the record and the value is the name
-                const clientMap = Object.fromEntries(clients);
-                const serviceMap = Object.fromEntries(services);
-
-                const detailedAppointments =  appointments.map(app => ({
-                    id: app.id,
-                    cliente: clientMap[app.cliente],
-                    servicio: serviceMap[app.servicio],
-                    fecha: app.fecha.split("T").join(" "),
-                    estado: app.estado
-                }))
-
-                createTableInstance(detailedAppointments);
-                hideSpinnerSection();
-            })
-        })
+export function showRecords(objectStore) {
+    DB.getRecords(objectStore)
+        .then(records => displayRecordsInTable(records))
         .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
+}
+
+export function getAppointments(callback = displayRecordsInTable){ //If callback is not provided, the specified function will be used.
+    DB.getRecords("appointments")
+    .then(appointments => formatAppointments(appointments, callback)) 
+}
+
+//Function to show the records in the datatable
+export function formatAppointments(appointments, callback) {
+    const clientIds = [...new Set(appointments.map(app => app.cliente))];
+    const serviceIds = [...new Set(appointments.map(app => app.servicio))];
+
+    return Promise.all([
+        DB.getRecordsByIds("clients", clientIds),
+        DB.getRecordsByIds("services", serviceIds)
+    ])
+    .then(([clients, services]) => {
+        //Create objects from the mapping of the promise responses, where the key is the id of the record and the value is the name
+        const clientMap = Object.fromEntries(clients);
+        const serviceMap = Object.fromEntries(services);
+
+        const detailedAppointments =  appointments.map(app => ({
+            id: app.id,
+            cliente: clientMap[app.cliente],
+            servicio: serviceMap[app.servicio],
+            fecha: app.fecha.split("T").join(" "),
+            estado: app.estado
+        }))
+
+        callback(detailedAppointments);
+    })
+    .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
 }
 
 //Function to set up the table event listeners
@@ -202,4 +203,24 @@ export function goToControlPage() {
 
 export function formatTitle(title){
     return title.charAt(0).toUpperCase() + title.slice(1).replace(/_/g, ' ');
+}
+
+export function formatDateString(date){
+    const dateString = new Date(date).toLocaleDateString("co-CO", {
+        month: 'long',
+        day: 'numeric',
+    })
+
+    const dateStringSplitted = dateString.split(" ")
+    dateStringSplitted[2] = dateStringSplitted[2].charAt(0).toUpperCase() + dateStringSplitted[2].slice(1);
+    const formattedString = dateStringSplitted.join(" ")
+    return formattedString;
+}
+
+export function formatTime(date) {
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const timePeriod = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12 || 12;
+    return `${hours}:${minutes} ${timePeriod}`;
 }

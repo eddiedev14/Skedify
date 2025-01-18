@@ -29,10 +29,12 @@ export const modalAppointmentStateInput = document.querySelector(".form__input--
 
 //* Calendar
 export const calendarHeading = document.querySelector("#calendar-date");
+export const calendar = document.querySelector(".calendar__days");
 export const calendarDays = document.querySelectorAll(".calendar__day");
 export const firstDayGrid = document.querySelector(".calendar__day:first-child");
 export const previousMonthBtn = document.querySelector(".calendar__button--previous");
 export const nextMonthBtn = document.querySelector(".calendar__button--next");
+export const modalCalendarList = document.querySelector(".modal__list");
 
 //* Profile Form
 export const profileAvatar = document.querySelector("#avatar")
@@ -40,6 +42,7 @@ export const profileAvatar = document.querySelector("#avatar")
 //* Avatar Modal
 export const modalProfileBtn = document.querySelector("#change-avatar");
 export const modal = document.querySelector(".modal");
+export const modalHeading = document.querySelector(".modal__heading");
 export const modalMain = document.querySelector(".modal__main");
 export const modalCloseBtn = document.querySelector(".modal__close");
 export const modalCancelBtn = document.querySelector(".modal__button--close");

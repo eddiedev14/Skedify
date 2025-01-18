@@ -1,0 +1,130 @@
+.modal__list__container{
+    max-height: 350px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.modal__list{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 16px;
+}
+
+.modal__item{
+    width: 100%;
+    list-style: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: var(--background);
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+}
+
+.item__description{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.item__icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.25em;
+}
+
+.item__icon--completada{
+    background-color: var(--calendar-green-status);
+}
+
+.item__icon--completada i, .modal__item:has(.item__icon--completada) .item__hour i{
+    color: var(--green);
+}
+
+.item__icon--confirmada{
+    background-color: var(--calendar-blue-status);
+}
+
+.item__icon--confirmada i, .modal__item:has(.item__icon--confirmada) .item__hour i{
+    color: var(--blue);
+}
+
+.item__icon--pendiente{
+    background-color: var(--calendar-orange-status);
+}
+
+.item__icon--pendiente i, .modal__item:has(.item__icon--pendiente) .item__hour i{
+    color: var(--orange);
+}
+
+.item__icon--cancelada{
+    background-color: var(--calendar-red-status);
+}
+
+.item__icon--cancelada i, .modal__item:has(.item__icon--cancelada) .item__hour i{
+    color: var(--red);
+}
+
+.item__content{
+    display: flex;
+    flex-direction: column;
+}
+
+.item__service{
+    font-size: 0.875em;
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+.item__client{
+    font-size: 0.625em;
+    color: var(--light-gray);
+}
+
+.item__hour{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.625em;
+}
+
+.modal__button--primary{
+    text-decoration: none;
+}
+
+@container modal (min-width: 400px){
+    .item__icon{
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 1.75em;
+    }
+
+    .item__service{
+        font-size: 1em;
+    }
+    
+    .item__client{
+        font-size: 0.75em;
+        color: var(--light-gray);
+    }
+
+    .item__hour{
+        font-size: 0.75em;
+    }
+}
+
+@container modal (min-width: 500px){
+    .item__hour{
+        font-size: 0.875em;
+    }
+}

@@ -130,16 +130,6 @@
                 <ol class="calendar__days">
                     <li class="calendar__day" data-day="1">
                         <div class="day__info"><h5>1</h5></div>
-                        <!-- <div class="day__info">
-                            <h5>1</h5>
-                            <button class="day__notification"><i class="ri-information-2-fill"></i></button>
-                        </div>
-                        <ul class="calendar__appointments">
-                            <li class="appointment__completed"><i class="ri-checkbox-circle-fill"></i> Proyecto Web</li>
-                            <li class="appointment__confirmed"><i class="ri-check-fill"></i> Consultoría SEO</li>
-                            <li class="appointment__pending"><i class="ri-hourglass-fill"></i> Dropshipping</li>
-                            <li class="appointment__canceled"><i class="ri-close-circle-fill"></i> Consultoría SEO</li>
-                        </ul> -->
                     </li>
                     <li class="calendar__day" data-day="2">
                         <div class="day__info"><h5>2</h5></div>
@@ -235,6 +225,24 @@
             </section>
         </main>
     </div>
+
+    <dialog class="modal" id="appointments-modal">
+        <div class="modal__container">
+            <section class="modal__card">
+            <header class="modal__header">
+                <h3 class="modal__heading"></h3>
+                <button type="button" class="modal__close"><i class="ri-close-line"></i></button>
+            </header>
+            <div class="modal__list__container">
+                <ul class="modal__list"></ul>
+            </div>
+            <footer class="modal__footer">
+                <button type="button" class="modal__button modal__button--close">Cancelar</button>
+                <a href="control.html?search=17-01-2024" class="modal__button modal__button--primary">Ver en Control de Citas</a>
+            </footer>
+        </section>
+        </div>
+    </dialog>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/main.js" type="module"></script>
