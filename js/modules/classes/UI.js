@@ -1,5 +1,5 @@
 import { appointmentStateContainer, emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, modalAppointmentSubmitBtn, modalCalendarList, profileAvatar } from "../selectores.js";
-import { formatTime, goToControlPage, reloadPage } from "../funciones.js";
+import { formatTime, goToControlPage } from "../funciones.js";
 import LocalStorage from "./LocalStorage.js";
 import DB from "./DB.js";
 import Alert from "../components/Alert.js";
@@ -198,6 +198,12 @@ class UI{
         listItem.appendChild(itemDate);
 
         modalCalendarList.appendChild(listItem);
+    }
+
+    cleanCalendarDay(calendarDay){
+        calendarDay.classList.remove("calendar__day--content")
+        calendarDay.querySelector(".day__info button.day__notification").remove();
+        calendarDay.querySelector("ul.calendar__appointments").remove();
     }
 
     cleanHTML(container){

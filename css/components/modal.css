@@ -37,7 +37,7 @@
 }
 
 .modal[open].closing .modal__card{
-    animation: closing .75s ease-in-out forwards;
+    animation: closing .3s ease-in-out forwards;
 }
 
 .modal__header{
@@ -128,6 +128,16 @@
 
 @keyframes closing {
     0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+/* @keyframes closing {
+    0%{
         scale: 1;
     }
 
@@ -138,4 +148,4 @@
     100%{
         scale: 0;
     }
-}
+} */

@@ -1,7 +1,7 @@
-import { getFormData, goToControlPage, reloadPage } from "../funciones.js";
+import { modalAppointmentStateInput } from "../selectores.js";
+import { getFormData, goToControlPage, reloadPage, toCustomISOFormat } from "../funciones.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
-import { modalAppointmentStateInput } from "../selectores.js";
 
 class DB{
     #db;
@@ -34,6 +34,9 @@ class DB{
                 const appointments = db.createObjectStore("appointments", { keyPath: "id" });
                 const clients = db.createObjectStore("clients", { keyPath: "id" });
                 const services = db.createObjectStore("services", { keyPath: "id" });
+
+                //* Indexes
+                appointments.createIndex("fecha_idx", "fecha")
             }
         })
     }
@@ -145,6 +148,23 @@ class DB{
                 request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el estado de la cita", reloadPage); 
             })
             .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
+    }
+
+    async getMonthlyAppointments(firstMonthDate, lastMonthDate) {
+        if (!this.#db) await this.init();
+
+        const firstDateStr = toCustomISOFormat(firstMonthDate);
+        const lastDateStr = toCustomISOFormat(lastMonthDate);
+
+        return new Promise((resolve, reject) => {
+            const transaction = this.#db.transaction("appointments", "readonly");
+            const objectStoreElement = transaction.objectStore("appointments");
+            const dateIndex = objectStoreElement.index("fecha_idx")
+            const request = dateIndex.getAll(IDBKeyRange.bound(firstDateStr, lastDateStr));
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo los registro"));
+        })
     }
 
     async getRecordsByIds(objectStore, ids){

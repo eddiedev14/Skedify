@@ -22,5 +22,5 @@ export function closeModal() {
     setTimeout(() => {
         modal.close();
         modal.classList.remove("closing");
-    }, 750);
+    }, 300);
 }

@@ -137,7 +137,7 @@ export function showRecords(objectStore) {
 
 export function getAppointments(callback = displayRecordsInTable){ //If callback is not provided, the specified function will be used.
     DB.getRecords("appointments")
-    .then(appointments => formatAppointments(appointments, callback)) 
+        .then(appointments => formatAppointments(appointments, callback)) 
 }
 
 //Function to show the records in the datatable
@@ -205,6 +205,8 @@ export function formatTitle(title){
     return title.charAt(0).toUpperCase() + title.slice(1).replace(/_/g, ' ');
 }
 
+//* Calendar Functions
+
 export function formatDateString(date){
     const dateString = new Date(date).toLocaleDateString("co-CO", {
         month: 'long',
@@ -223,4 +225,8 @@ export function formatTime(date) {
     const timePeriod = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12 || 12;
     return `${hours}:${minutes} ${timePeriod}`;
+}
+
+export function toCustomISOFormat(date) {
+    return date.toISOString().slice(0, 16);
 }

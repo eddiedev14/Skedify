@@ -11,23 +11,31 @@ export function renderCalendar() {
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
 
+    const firstMonthDate = new Date(year, month, 1);
+    const lastMonthDate = new Date(year, month + 1, 0);
+
     const calendarTitle = currentDate.toLocaleDateString("co-CO", {
         month: "long",
         year: "numeric"
     })
     calendarHeading.textContent = formatTitle(calendarTitle);
 
-    const firstWeekDay = new Date(year, month, 1).getDay();
-    const lastMonthDay = new Date(year, month + 1, 0).getDate();
+    const firstWeekDay = firstMonthDate.getDay();
+    const lastMonthDay = lastMonthDate.getDate();
     
     //Move grid to the first weekday of the month
     firstDayGrid.style.gridColumnStart = firstWeekDay;
 
-    //Hide extra days
-    calendarDays.forEach(calendarDay => {
+    //Hide/show the last four days
+    for (let i = 30; i >= 27; i--) {
+        const calendarDay = calendarDays[i];
         const day = Number(calendarDay.dataset.day);
         calendarDay.classList.toggle("calendar__day--hidden", day > lastMonthDay)
-    })
+    }
+
+    //Get monthly appointments
+    DB.getMonthlyAppointments(firstMonthDate, lastMonthDate)
+        .then(appointments => formatAppointments(appointments, displayAppointmentsInCalendar))
 }
 
 export function setMonth(step){
@@ -36,7 +44,10 @@ export function setMonth(step){
     renderCalendar()
 }
 
-export function displayAppointmentsInCalendar(appointments){
+function displayAppointmentsInCalendar(appointments){
+    const calendarDaysWithAppointments = document.querySelectorAll(".calendar__day--content");
+    calendarDaysWithAppointments.forEach(calendarDay => UI.cleanCalendarDay(calendarDay))
+
     appointments.forEach(record => {
         const date = new Date(record.fecha);
         const day = date.getDate();
