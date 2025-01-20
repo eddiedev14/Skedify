@@ -66,6 +66,7 @@
 
 .calendar__days{
     background-color: #FAFAFA;
+    transition: .3s ease-in-out background-color, .3s ease-in-out border-color;
 }
 
 .calendar__day{
@@ -218,7 +219,7 @@
         font-size: 0.75em;
         color: var(--calendar--appointment-text-color);
         border-radius: 12px;
-        
+        transition: .3s ease-in-out transform, .3s ease-in-out box-shadow;
     }
 
     .calendar__appointments li button{
@@ -277,6 +278,22 @@
         width: 32px;
         height: 32px;
         font-size: 28px;
+    }
+
+    /* Drag & Drop */
+    .drag__over{
+        background-color: var(--light-primary);
+        border-color: var(--primary);
+        transition: .3s ease-in-out border-color, .3s ease-in-out background-color;
+    }
+
+    .drag__over .day__info h5{
+        color: #fff;
+    }
+
+    .dragging {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
     }
 }
 

@@ -24,7 +24,7 @@ export function renderCalendar() {
     const lastMonthDay = lastMonthDate.getDate();
     
     //Move grid to the first weekday of the month
-    firstDayGrid.style.gridColumnStart = firstWeekDay;
+    firstDayGrid.style.gridColumnStart = firstWeekDay === 0 ? 7 : firstWeekDay;
 
     //Hide/show the last four days
     for (let i = 30; i >= 27; i--) {
@@ -79,4 +79,71 @@ function displayAppointmentsInModal(appointments){
     UI.cleanHTML(modalCalendarList);
     appointments.forEach(appointment => UI.createCalendarModalItem(appointment))
     openModal();
+}
+
+//* Drag & Drop
+export function startDrag(e) {
+    const appointmentID = e.target.dataset.id;
+    e.dataTransfer.setData("id", appointmentID);
+    e.target.classList.add("dragging") 
+}
+
+export function dragOverHandler(e) {
+    e.preventDefault();
+    const target = e.target;
+    const calendarDay = target.closest(".calendar__day");
+    
+    if (calendarDay && !calendarDay.classList.contains("drag__over")) {
+        calendarDay.classList.add("drag__over");
+    }
+}
+
+export function dragLeaveHandler(e) {
+    e.target.classList.remove("drag__over");
+}
+
+export function dragEndHandler(e) {
+    e.target.classList.remove("dragging")
+
+    //Remove all days with the drag__over class (Prevent UI failures)
+    const dragOverDays = document.querySelectorAll(".calendar__day.drag__over")
+    dragOverDays.forEach(day => day.classList.remove("drag__over"))
+}
+
+export function dropAppointment(e) {
+    e.preventDefault();
+
+    const target = e.target;
+    let calendarDayContainer = target;
+
+    //Get the calendar day container and not a child
+    if (!target.classList.contains("calendar__day")) {
+        calendarDayContainer = target.closest(".calendar__day");
+    }
+
+    if (!calendarDayContainer.classList.contains("calendar__day--content")) {
+        calendarDayContainer.classList.add("calendar__day--content");
+    }
+
+    //Get the dragged appointment
+    const appointmentID = e.dataTransfer.getData("id");
+    const draggedAppointment = document.querySelector(`.calendar__appointments li[data-id='${appointmentID}']`);
+    const previousCalendarDayContainer = draggedAppointment.closest(".calendar__day--content");
+
+    // In case the element is not found, it returns
+    if (!draggedAppointment) {
+        Alert.showStatusAlert("error", "¡Error!", "La cita con el ID proporcionado no fue encontrada", reloadPage)
+        return;
+    }
+
+    // Create the calendar day list and append the appointment
+    const list = UI.createCalendarDayList(calendarDayContainer);
+    list.appendChild(draggedAppointment);
+
+    //Reset the previous calendar day
+    UI.resetPreviousCalendarDay(previousCalendarDayContainer);
+
+    //Update the selected appointment
+    const selectedDay = calendarDayContainer.dataset.day;
+    DB.updateAppointmentDate(appointmentID, selectedDay)
 }

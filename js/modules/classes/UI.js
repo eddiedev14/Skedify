@@ -1,8 +1,10 @@
+import { appointmentStatusIcon } from "../variables.js";
 import { appointmentStateContainer, emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, modalAppointmentSubmitBtn, modalCalendarList, profileAvatar } from "../selectores.js";
 import { formatTime, goToControlPage } from "../funciones.js";
+import { startDrag } from "../components/Calendar.js";
+import Alert from "../components/Alert.js";
 import LocalStorage from "./LocalStorage.js";
 import DB from "./DB.js";
-import Alert from "../components/Alert.js";
 
 class UI{
     //* Profile
@@ -87,31 +89,21 @@ class UI{
     //* Calendar
 
     updateCalendarDayContent(container, { id, estado, servicio }){
+        const formattedStatus = estado.toLowerCase();
+
         container.classList.add("calendar__day--content");
-        const dayInfoContainer = container.querySelector(".day__info");
-
-        //Creating the appointments visual indicator button
-        let visualIndicatorBtn = dayInfoContainer.querySelector(".day__notification");
-        if (!visualIndicatorBtn) {
-            visualIndicatorBtn = document.createElement("BUTTON");
-            visualIndicatorBtn.classList.add("day__notification");
-            visualIndicatorBtn.innerHTML = '<i class="ri-information-2-fill"></i>';
-            dayInfoContainer.appendChild(visualIndicatorBtn)
-        }
-
-        let list = container.querySelector(".calendar__appointments");
-        if (!list) {
-            list = document.createElement("UL");
-            list.classList.add("calendar__appointments");
-            container.appendChild(list)
-        }
+        const list = this.createCalendarDayList(container);
 
         const listItem = document.createElement("LI");
+        listItem.draggable = "true";
+        listItem.ondragstart = (e) => startDrag(e);
         listItem.dataset.id = id;
-        listItem.classList.add(`appointment__${estado.toLowerCase()}`)
+        listItem.classList.add(`appointment__${formattedStatus}`)
 
         const listButton = document.createElement("BUTTON");
-        const icon = this.createAppointmentStatusIcon(estado)
+        
+        const icon = document.createElement("I");
+        icon.classList.add(appointmentStatusIcon[formattedStatus])
 
         const textSpan = document.createElement("SPAN");
         textSpan.textContent = servicio;
@@ -124,33 +116,37 @@ class UI{
         list.appendChild(listItem)
     }
 
-    createAppointmentStatusIcon(estado){
-        const icon = document.createElement("I");
-        switch (estado) {
-            case "Completada":
-                icon.classList.add("ri-checkbox-circle-fill");
-                break;
+    createCalendarDayList(container){
+        const dayInfoContainer = container.querySelector(".day__info");
 
-            case "Confirmada":
-                icon.classList.add("ri-checkbox-circle-fill");
-                break;
-
-            case "Pendiente":
-                icon.classList.add("ri-hourglass-fill");
-                break;
-
-            case "Cancelada":
-                icon.classList.add("ri-close-circle-fill");
-                break;
-        
-            default:
-                break;
+        //Creating the appointments visual indicator button
+        let visualIndicatorBtn = dayInfoContainer.querySelector(".day__notification");
+        if (!visualIndicatorBtn) {
+            visualIndicatorBtn = document.createElement("BUTTON");
+            visualIndicatorBtn.classList.add("day__notification");
+            visualIndicatorBtn.innerHTML = '<i class="ri-information-2-fill"></i>';
+            dayInfoContainer.appendChild(visualIndicatorBtn)
         }
 
-        return icon;
+        //Creaing the list
+        let list = container.querySelector(".calendar__appointments");
+        if (!list) {
+            list = document.createElement("UL");
+            list.classList.add("calendar__appointments");
+            container.appendChild(list)
+        }
+
+        return list;
+    }
+
+    resetPreviousCalendarDay(container){
+        const appointmentsLength = container.querySelector(".calendar__appointments").children.length;
+        if (!appointmentsLength) this.cleanCalendarDay(container);
     }
 
     createCalendarModalItem({ servicio, cliente, estado, fecha }){
+        const formattedStatus = estado.toLowerCase();
+
         const listItem = document.createElement("LI");
         listItem.classList.add("modal__item");
 
@@ -159,8 +155,10 @@ class UI{
         itemDescription.classList.add("item__description");
 
         const itemIcon = document.createElement("DIV");
-        itemIcon.classList.add(`item__icon`, `item__icon--${estado.toLowerCase()}`)
-        const icon = this.createAppointmentStatusIcon(estado);
+        itemIcon.classList.add(`item__icon`, `item__icon--${formattedStatus}`)
+        
+        const icon = document.createElement("I");
+        icon.classList.add(appointmentStatusIcon[formattedStatus])
 
         itemIcon.appendChild(icon);
 

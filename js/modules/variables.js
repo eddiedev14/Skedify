@@ -6,6 +6,13 @@ export const userDefault = {
     avatar: "man-1"
 }
 
+export const appointmentStatusIcon = {
+  completada: "ri-checkbox-circle-fill",
+  confirmada: "ri-check-fill",
+  pendiente: "ri-hourglass-fill",
+  cancelada: "ri-close-circle-fill"
+}
+
 export const validationFormConfig = {
     'required': {
       validate: (value) => value.trim() !== '',

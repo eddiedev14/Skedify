@@ -1,5 +1,6 @@
 import { modalAppointmentStateInput } from "../selectores.js";
 import { getFormData, goToControlPage, reloadPage, toCustomISOFormat } from "../funciones.js";
+import { showSuccessToast } from "../components/Toast.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
 
@@ -134,7 +135,7 @@ class DB{
         request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error eliminando los registros relacionados", reloadPage); 
     }
 
-    async updateState(id){
+    updateState(id){
         const estado = modalAppointmentStateInput.value;
 
         this.getRecord("appointments", id)
@@ -148,6 +149,30 @@ class DB{
                 request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el estado de la cita", reloadPage); 
             })
             .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
+    }
+
+    updateAppointmentDate(id, newDay){
+        this.getRecord("appointments", id)
+        .then(appointment => {
+            const date = new Date(appointment.fecha);
+
+            //Setting the day without being affected by the time zone
+            const currentYear = date.getFullYear();
+            const currentMonth = date.getMonth();
+            date.setFullYear(currentYear, currentMonth, newDay);
+
+            //Date format - The 'sv-SE' format is similar to ISO and uses the local time zone.
+            const fecha = date.toLocaleString("sv-SE");
+
+            const updatedAppointment = { ...appointment, fecha }
+            const transaction = this.#db.transaction("appointments", "readwrite");
+            const objectStoreElement = transaction.objectStore("appointments");
+            const request = objectStoreElement.put(updatedAppointment);
+
+            request.onsuccess = () => showSuccessToast("¡Cita Actualizada!")
+            request.onerror = () => Alert.showStatusAlert("error", "¡Ops...! Ha ocurrido un error actualizando el registro", reloadPage); 
+        })
+        .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
     }
 
     async getMonthlyAppointments(firstMonthDate, lastMonthDate) {
