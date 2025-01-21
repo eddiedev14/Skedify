@@ -1,10 +1,21 @@
-const notyf = new Notyf({
-    position: {
-        x: "right",
-        y: "top"
+class Toast {
+    constructor() {
+        this.notyf = null;
+        if (typeof Notyf !== "undefined") {
+            this.notyf = new Notyf({
+                position: {
+                    x: "right",
+                    y: "top",
+                },
+            });
+        }
     }
-});
 
-export function showSuccessToast(message) {
-    notyf.success(message);
+    success(message) {
+        if (this.notyf) {
+            this.notyf.success(message);
+        }
+    }
 }
+
+export default new Toast();

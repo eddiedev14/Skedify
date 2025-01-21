@@ -1,6 +1,7 @@
-import { calendarDays, calendarHeading, firstDayGrid, modalCalendarList, modalHeading } from "../selectores.js";
+import { calendarDays, calendarHeading, firstDayGrid, linkAppointmentsControlBtn, modalCalendarList, modalHeading } from "../selectores.js";
 import { formatAppointments, formatDateString, formatTitle, reloadPage } from "../funciones.js";
 import { openModal } from "./Modal.js";
+import LocalStorage from "../classes/LocalStorage.js";
 import UI from "../classes/UI.js";
 import DB from "../classes/DB.js";
 import Alert from "./Alert.js";
@@ -73,11 +74,14 @@ export function loadAppointmentsModal(e){
 }
 
 function displayAppointmentsInModal(appointments){
-    const formattedDateString = formatDateString(appointments[0].fecha);
+    const date = appointments[0].fecha;
+    const formattedDateString = formatDateString(date);
     
     modalHeading.textContent = `Citas - ${formattedDateString}`;
     UI.cleanHTML(modalCalendarList);
     appointments.forEach(appointment => UI.createCalendarModalItem(appointment))
+    linkAppointmentsControlBtn.href = `control.html?search=${date.slice(0,10)}`;
+
     openModal();
 }
 
@@ -85,6 +89,7 @@ function displayAppointmentsInModal(appointments){
 export function startDrag(e) {
     const appointmentID = e.target.dataset.id;
     e.dataTransfer.setData("id", appointmentID);
+    e.dataTransfer.dropEffect = "move"
     e.target.classList.add("dragging") 
 }
 
@@ -110,8 +115,15 @@ export function dragEndHandler(e) {
     dragOverDays.forEach(day => day.classList.remove("drag__over"))
 }
 
-export function dropAppointment(e) {
+export async function dropAppointment(e) {
     e.preventDefault();
+
+    //Get the appointment id before the await to avoid errors with the dataTransfer
+    const appointmentID = e.dataTransfer.getData("id");
+
+    //Confirm Movement Action
+    const confirmation = await LocalStorage.confirmAppointmentMovement();
+    if (!confirmation) return
 
     const target = e.target;
     let calendarDayContainer = target;
@@ -126,7 +138,6 @@ export function dropAppointment(e) {
     }
 
     //Get the dragged appointment
-    const appointmentID = e.dataTransfer.getData("id");
     const draggedAppointment = document.querySelector(`.calendar__appointments li[data-id='${appointmentID}']`);
     const previousCalendarDayContainer = draggedAppointment.closest(".calendar__day--content");
 

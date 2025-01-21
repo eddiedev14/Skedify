@@ -110,10 +110,11 @@
             <section class="calendar">
                 <header class="calendar__header">
                     <div class="header__container">
-                        <button class="calendar__button calendar__button--previous"><i class="ri-arrow-left-s-line"></i></button>
+                        <button class="calendar__button calendar__button--previous" aria-label="Ir al Anterior Mes"><i class="ri-arrow-left-s-line"></i></button>
                         <h3 class="container__heading" id="calendar-date"></h3>
-                        <button class="calendar__button calendar__button--next"><i class="ri-arrow-right-s-line"></i></button>
+                        <button class="calendar__button calendar__button--next" aria-label="Ir al Siguiente Mes"><i class="ri-arrow-right-s-line"></i></button>
                     </div>
+                    <button class="calendar__button calendar__button--info" aria-label="Tener en Cuenta"><i class="ri-info-i"></i></button>
                 </header>
                 
                 <!-- Días de la semana -->
@@ -239,7 +240,7 @@
             </div>
             <footer class="modal__footer">
                 <button type="button" class="modal__button modal__button--close">Cancelar</button>
-                <a href="control.html?search=17-01-2024" class="modal__button modal__button--primary">Ver en Control de Citas</a>
+                <a href="#" class="modal__button modal__button--primary modal__button--control">Ver en Control de Citas</a>
             </footer>
         </section>
         </div>

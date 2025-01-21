@@ -7,6 +7,9 @@ export function createTableInstance(records) {
         return;
     }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search') || '';
+
     const columns = Object.keys(records[0]).map(key => ({
         title: formatTitle(key),
         data: key,
@@ -33,6 +36,9 @@ export function createTableInstance(records) {
     const table = new DataTable('#table', {
         data: records,
         columns,
+        search: {
+            search: searchQuery
+        },
         pageLength: 10,
         lengthMenu: [5, 10, 20],
         responsive: true,

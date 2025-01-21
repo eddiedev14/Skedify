@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .header__container{
@@ -36,9 +37,13 @@
     color: #FE783D;
     display: grid;
     place-items: center;
-    font-size: 20px;
+    font-size: 1.25em;
     cursor: pointer;
     transition: .3s ease-in-out scale;
+}
+
+.calendar__button--info{
+    display: none;
 }
 
 .calendar__button:hover, .calendar__button:focus{
@@ -277,7 +282,16 @@
     .calendar__button{
         width: 32px;
         height: 32px;
-        font-size: 28px;
+        font-size: 1.75em;
+    }
+
+    .calendar__button--info{
+        display: grid;
+        width: 24px;
+        height: 24px;
+        font-size: 1.25em;
+        position: absolute;
+        right: 48px;
     }
 
     /* Drag & Drop */

@@ -45,6 +45,27 @@ class LocalStorage{
         this.setUser(newUser)
         Alert.showStatusAlert("success", "Información de perfil actualizada", "Tu información de perfil se ha guardado exitosamente", reloadPage)
     }
+
+    //Skip Confirmation Moving Appointments
+    async confirmAppointmentMovement(){
+        const skipConfirmation = localStorage.getItem("skipConfirmation") === "true";
+
+        if (!skipConfirmation) {
+            const result = await Alert.showConfirmationMovementAlert()
+            const noAskAgain = document.getElementById("noAskAgain").checked;
+            if (noAskAgain) {
+                localStorage.setItem("skipConfirmation", "true");
+            } 
+
+            return result.isConfirmed;
+        }
+
+        return skipConfirmation;
+    }
+
+    resetMovementConfirmation(){
+        localStorage.removeItem("skipConfirmation");
+    }
 }
 
 export default new LocalStorage();
