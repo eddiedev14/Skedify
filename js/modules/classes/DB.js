@@ -1,5 +1,5 @@
 import { modalAppointmentStateInput } from "../selectores.js";
-import { getFormData, goToControlPage, reloadPage, toCustomISOFormat } from "../funciones.js";
+import { getFormData, goToControlPage, reloadPage, toCustomISOFormat, getDailyRange } from "../funciones.js";
 import Toast from "../components/Toast.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
@@ -170,11 +170,11 @@ class DB{
                 .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
         }
 
-    async getMonthlyAppointments(firstMonthDate, lastMonthDate) {
+    async getMonthlyAppointments([firstDateStr, lastDateStr]) {
         if (!this.#db) await this.init();
 
-        const firstDateStr = toCustomISOFormat(firstMonthDate);
-        const lastDateStr = toCustomISOFormat(lastMonthDate);
+        console.log(firstDateStr)
+        console.log(lastDateStr)
 
         return new Promise((resolve, reject) => {
             const transaction = this.#db.transaction("appointments", "readonly");
@@ -192,6 +192,99 @@ class DB{
         return records
             .filter(record => ids.includes(record.id))
             .map(record => ([record.id, record.nombre])); // We return an array where each position is an array with the id and the name
+    }
+
+    //* Dashboard
+    async getDailyAppointmentsCount(states = []){
+        if (!this.#db) await this.init();
+
+        //Get the daily range
+        const [startOfDay, endOfDay] = getDailyRange();
+
+        const results = {};
+
+        return new Promise((resolve, reject) => {
+            const transaction = this.#db.transaction("appointments", "readonly");
+            const objectStoreElement = transaction.objectStore("appointments");
+            const dateIndex = objectStoreElement.index("fecha_idx")
+            const cursorRequest = dateIndex.openCursor(IDBKeyRange.bound(startOfDay, endOfDay));
+
+            cursorRequest.onsuccess = () => {
+                const cursor = cursorRequest.result;
+
+                if (cursor) {
+                    const appointment = cursor.value;
+                    const state = appointment.estado;
+
+                    //Checks if the status is one of those passed as argument
+                    if (states.includes(state)) {
+                        if (!results[state]) {
+                            results[state] = 0;
+                        }
+                        results[state]++;
+                    }
+
+                    cursor.continue();
+                }else{
+                    resolve(results); 
+                }
+            }
+
+            cursorRequest.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo el numero total de registro"));
+        });
+    }
+
+    async getRecordsCount(objectStore){
+        if (!this.#db) await this.init();
+
+        return new Promise((resolve, reject) => {
+            const transaction = this.#db.transaction(objectStore, "readonly");
+            const objectStoreElement = transaction.objectStore(objectStore);
+            const countRequest = objectStoreElement.count();
+
+            countRequest.onsuccess = () => resolve(countRequest.result);
+            countRequest.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo el numero de registros"));
+        })
+    }
+
+    async getIncomes([startDate, endDate]){
+        if (!this.#db) await this.init();
+        
+        //1. Create a service object with its respective price
+        const services = await this.getRecords("services")
+        const servicesMap = Object.fromEntries(services.map(service => ([service.id, parseFloat(service.precio)])));
+
+        return new Promise((resolve, reject) => {
+            //2. Get appointments between date range
+            const transaction = this.#db.transaction("appointments", "readonly");
+            const objectStoreElement = transaction.objectStore("appointments");
+            const dateIndex = objectStoreElement.index("fecha_idx")
+            const cursorRequest = dateIndex.openCursor(IDBKeyRange.bound(startDate, endDate));
+
+            //3. Create accumulator variable
+            let incomes = 0;
+
+            cursorRequest.onsuccess = () => {
+                const cursor = cursorRequest.result;
+
+                if (cursor) {
+                    //4. For each appointment, the value of the service is added if its status is "Completada"
+                    const appointment = cursor.value;
+                    
+                    if (appointment.estado === "Completada") {
+                        const service = appointment.servicio;
+                        incomes += servicesMap[service];   
+                    }
+
+                    cursor.continue();
+                }else{
+                    //5. Resolve with the accumulator variable
+                    resolve(incomes)
+                }
+            }
+
+            cursorRequest.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo los ingresos de la empresa"));
+        });
     }
 }
 

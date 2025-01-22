@@ -255,14 +255,6 @@
         color: var(--green);
     }
 
-    .appointment__confirmada{
-        background-color: var(--calendar-blue-status);
-    }
-
-    .appointment__confirmada i{
-        color: var(--blue);
-    }
-
     .appointment__pendiente{
         background-color: var(--calendar-orange-status);
     }

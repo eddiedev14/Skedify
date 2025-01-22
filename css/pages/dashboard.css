@@ -1,4 +1,5 @@
 @import url("../base/base.css");
+@import url("../components/preloader.css");
 @import url("../components/header.css");
 @import url("../components/sidebar.css");
 @import url("../components/stats.css");

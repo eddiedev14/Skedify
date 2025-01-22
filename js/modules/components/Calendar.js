@@ -1,5 +1,5 @@
 import { calendarDays, calendarHeading, firstDayGrid, linkAppointmentsControlBtn, modalCalendarList, modalHeading } from "../selectores.js";
-import { formatAppointments, formatDateString, formatTitle, reloadPage } from "../funciones.js";
+import { formatAppointments, formatDateRange, formatDateString, formatTitle, reloadPage } from "../funciones.js";
 import { openModal } from "./Modal.js";
 import LocalStorage from "../classes/LocalStorage.js";
 import UI from "../classes/UI.js";
@@ -35,7 +35,7 @@ export function renderCalendar() {
     }
 
     //Get monthly appointments
-    DB.getMonthlyAppointments(firstMonthDate, lastMonthDate)
+    DB.getMonthlyAppointments(formatDateRange([firstMonthDate, lastMonthDate]))
         .then(appointments => formatAppointments(appointments, displayAppointmentsInCalendar))
 }
 

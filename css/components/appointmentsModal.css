@@ -47,14 +47,6 @@
     color: var(--green);
 }
 
-.item__icon--confirmada{
-    background-color: var(--calendar-blue-status);
-}
-
-.item__icon--confirmada i, .modal__item:has(.item__icon--confirmada) .item__hour i{
-    color: var(--blue);
-}
-
 .item__icon--pendiente{
     background-color: var(--calendar-orange-status);
 }

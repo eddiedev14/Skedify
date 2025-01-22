@@ -1,12 +1,24 @@
 import { appointmentStatusIcon } from "../variables.js";
-import { appointmentStateContainer, emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, inputs, modalAppointmentSubmitBtn, modalCalendarList, profileAvatar } from "../selectores.js";
+import { appointmentStateContainer, clientsStats, emptyContainer, formHeading, formSubmit, headerProfileAvatar, headerProfileRole, headerProfileUser, incomesStats, inputs, modalAppointmentSubmitBtn, modalCalendarList, pendingAppointmentStats, profileAvatar, servicesStats, todayAppointmentStats } from "../selectores.js";
 import { formatTime, goToControlPage } from "../funciones.js";
 import { startDrag } from "../components/Calendar.js";
+import { hidePreloader } from "../components/Spinner.js";
 import Alert from "../components/Alert.js";
 import LocalStorage from "./LocalStorage.js";
 import DB from "./DB.js";
 
 class UI{
+    //* Dashboard
+    showStats({ today, pending, clients, services, incomes }){
+        todayAppointmentStats.textContent = today;
+        pendingAppointmentStats.textContent = pending;
+        clientsStats.textContent = clients;
+        servicesStats.textContent = services;
+        incomesStats.textContent = `$ ${incomes.toLocaleString("co-CO")}`;
+
+        hidePreloader();
+    }
+
     //* Profile
     showHeaderUserInfo({ name, role, avatar }){
         this.updateProfileAvatar(headerProfileAvatar, avatar)

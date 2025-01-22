@@ -8,7 +8,6 @@ export const userDefault = {
 
 export const appointmentStatusIcon = {
   completada: "ri-checkbox-circle-fill",
-  confirmada: "ri-check-fill",
   pendiente: "ri-hourglass-fill",
   cancelada: "ri-close-circle-fill"
 }

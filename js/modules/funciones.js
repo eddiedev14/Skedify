@@ -230,3 +230,23 @@ export function formatTime(date) {
 export function toCustomISOFormat(date) {
     return date.toISOString().slice(0, 16);
 }
+
+//Function to get the daily range with the hour
+export function getDailyRange(){
+    const today = new Date();
+    const todayStr = today.toISOString().split("T")[0];
+    const startOfDay = todayStr + "T00:00";
+    const endOfDay = todayStr + "T23:59";
+
+    return [startOfDay, endOfDay]
+}
+
+//Function to format a date range with the hour
+export function formatDateRange(range) {
+    const ISODates = range.map(date => date.toISOString().split("T")[0])
+    
+    const startDate = ISODates[0] + "T00:00";
+    const endDate = ISODates[1] + "T23:59";
+
+    return [startDate, endDate];
+}

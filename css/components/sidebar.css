@@ -12,11 +12,19 @@
     left: -80%;
     padding: 35px 25px;
     box-shadow: 0 10px 20px rgba(135, 43, 247, .5);
-    transition: .5s ease-in-out left;
+    transition: .5s ease-in-out left, .3s ease-in-out visibility;
 }
 
 .sidebar.open{
     left: 0;
+}
+
+body:has(.preloader) .sidebar{
+    visibility: hidden;
+}
+
+body:has(.preloader--hidden) .sidebar{
+    visibility: visible;
 }
 
 .sidebar__close{
