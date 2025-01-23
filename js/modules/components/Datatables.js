@@ -15,7 +15,7 @@ export function createTableInstance(records) {
         data: key,
         render: key === "estado" 
                 ? function(data, _, row) {
-                    return `<button class="table__status table__status--${data.toLowerCase()}" data-id="${row.id}">${data}</button>`;
+                    return `<button class="table__status table__status--${data.toLowerCase()}" data-id="${row.id}" aria-label="Abrir modal para editar estado de la tarea">${data}</button>`;
                 }
                 : undefined
     }))
@@ -26,8 +26,8 @@ export function createTableInstance(records) {
         data: null,
         render: function(row) {
             return `
-                <button class="table__btn table__btn--edit" data-id="${row.id}"><i class="ri-edit-box-fill"></i></button>
-                <button class="table__btn table__btn--delete" data-id="${row.id}"><i class="ri-delete-bin-fill"></i></button>
+                <button class="table__btn table__btn--edit" data-id="${row.id}" aria-label="Editar Registro"><i class="ri-edit-box-fill"></i></button>
+                <button class="table__btn table__btn--delete" data-id="${row.id}" aria-label="Eliminar Registro"><i class="ri-delete-bin-fill"></i></button>
             `;
         }
     })

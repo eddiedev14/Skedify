@@ -4,6 +4,8 @@ import Toast from "../components/Toast.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
 
+let priceServicesMap;
+
 class DB{
     #db;
 
@@ -249,10 +251,7 @@ class DB{
 
     async getIncomes([startDate, endDate]){
         if (!this.#db) await this.init();
-        
-        //1. Create a service object with its respective price
-        const services = await this.getRecords("services")
-        const servicesMap = Object.fromEntries(services.map(service => ([service.id, parseFloat(service.precio)])));
+        if (!priceServicesMap) await this.createPriceServicesMap() 
 
         return new Promise((resolve, reject) => {
             //2. Get appointments between date range
@@ -273,7 +272,7 @@ class DB{
                     
                     if (appointment.estado === "Completada") {
                         const service = appointment.servicio;
-                        incomes += servicesMap[service];   
+                        incomes += priceServicesMap[service];   
                     }
 
                     cursor.continue();
@@ -285,6 +284,11 @@ class DB{
 
             cursorRequest.onerror = () => reject(new Error("¡Ops...! Ha ocurrido un error obteniendo los ingresos de la empresa"));
         });
+    }
+
+    async createPriceServicesMap(){
+        const services = await this.getRecords("services");
+        priceServicesMap = Object.fromEntries(services.map(service => ([service.id, parseFloat(service.precio)])));
     }
 }
 

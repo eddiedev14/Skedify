@@ -177,8 +177,7 @@ export function setTableEventsListeners(e, objectStore, foreignKeyPropertie = nu
         openEdition(id)
     }else if(button.classList.contains("table__btn--delete")){
         Alert.showConfirmationAlert(objectStore, id, foreignKeyPropertie)
-    }
-    else if (button.classList.contains("table__status")) {
+    }else if (button.classList.contains("table__status")) {
         openModal();
         UI.showRecordModal(id);
     }

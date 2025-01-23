@@ -1,14 +1,21 @@
-import { formatDateRange, reloadPage } from "../funciones.js";
+import { formatDateRange, getDailyRange, reloadPage } from "../funciones.js";
 import Alert from "./Alert.js";
 import UI from "../classes/UI.js";
 import DB from "../classes/DB.js";
+import { incomesSpinner } from "../selectores.js";
+
+const incomesDateRanges = {
+    diarios: getDailyRange,
+    semanales: getWeeklyRange,
+    mensuales: getMonthlyRange
+}
 
 export function loadStats() {
     const promises = [
         DB.getDailyAppointmentsCount(["Pendiente", "Completada"]),
         DB.getRecordsCount("clients"),
         DB.getRecordsCount("services"),
-        DB.getIncomes(getWeekRange())
+        DB.getIncomes(getWeeklyRange())
     ]
 
     Promise.all(promises)
@@ -24,19 +31,39 @@ export function loadStats() {
                 incomes
             }
 
-            getMonthlyRange()
-
             UI.showStats(stats)
         })
         .catch(error => Alert.showStatusAlert("error", "¡Error!", error.message, reloadPage))
 }
 
-//TODO
-function getMonthlyRange(){
+export function handleIncomesRange(e){
+    incomesSpinner.classList.remove("spinner--hidden");
 
+    const range = e.target.value;
+    const rangeFunction = incomesDateRanges[range];
+    if (!rangeFunction) return
+
+    DB.getIncomes(rangeFunction())
+        .then(incomes => {
+            incomesSpinner.classList.add("spinner--hidden")
+            UI.updateIncomes(incomes)
+        })
 }
 
-function getWeekRange() {
+//TODO
+export function getMonthlyRange(){
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = today.getMonth();
+
+    const firstMonthDate = new Date(year, month, 1);
+    const lastMonthDate = new Date(year, month + 1, 0);
+
+    return formatDateRange([firstMonthDate, lastMonthDate])
+}
+
+export function getWeeklyRange() {
     const today = new Date();
     const dayOfWeek = today.getDay();
     

@@ -14,9 +14,13 @@ class UI{
         pendingAppointmentStats.textContent = pending;
         clientsStats.textContent = clients;
         servicesStats.textContent = services;
-        incomesStats.textContent = `$ ${incomes.toLocaleString("co-CO")}`;
+        this.updateIncomes(incomes)
 
         hidePreloader();
+    }
+
+    updateIncomes(incomes){
+        incomesStats.textContent = `$ ${incomes.toLocaleString("co-CO")}`;
     }
 
     //* Profile

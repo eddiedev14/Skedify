@@ -31,7 +31,7 @@
     </div>
 
     <nav class="sidebar" id="sidebar">
-        <button type="button" class="sidebar__close">
+        <button type="button" class="sidebar__close" aria-label="Cerrar el Sidebar">
             <i class="ri-close-large-fill"></i>
         </button>
         <div class="sidebar__content">
@@ -44,7 +44,7 @@
             </div>
             <ul class="sidebar__links">
                 <li class="sidebar__item sidebar__item--selected">
-                    <a href="/index.html">
+                    <a href="/index.html" aria-label="Ir al Dashboard">
                         <i class="ri-dashboard-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Dashboard</p>
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="/pages/citas/control.html">
+                    <a href="/pages/citas/control.html" aria-label="Ir a Citas">
                         <i class="ri-calendar-schedule-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Citas</p>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="/pages/clientes/control.html">
+                    <a href="/pages/clientes/control.html" aria-label="Ir a Clientes">
                         <i class="ri-group-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Clientes</p>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="/pages/servicios/control.html">
+                    <a href="/pages/servicios/control.html" aria-label="Ir a Servicios">
                         <i class="ri-briefcase-4-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Servicios</p>
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="/pages/configuracion.html">
+                    <a href="/pages/configuracion.html" aria-label="Ir a Configuración">
                         <i class="ri-settings-5-fill"></i>
                         <div class="item__hide">
                             <p class="item__name">Configuración</p>
@@ -91,22 +91,22 @@
             </ul>
         </div>
         <div class="sidebar__socials">
-            <div class="socials__item"><a href="https://github.com/eddiedev14" target="_blank"><i class="ri-github-fill"></i></a></div>
-            <div class="socials__item"><a href="https://www.youtube.com/@todocodigo/videos" target="_blank"><i class="ri-youtube-fill"></i></a></div>
-            <div class="socials__item"><a href="https://www.linkedin.com/in/eddie-santiago-delgado-campo-96690a2a3/" target="_blank"><i class="ri-linkedin-box-fill"></i></a></div>
+            <div class="socials__item"><a href="https://github.com/eddiedev14" target="_blank" aria-label="Ir al Github del Desarrollador"><i class="ri-github-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.youtube.com/@todocodigo/videos" target="_blank" aria-label="Ir al Youtube del Desarrollador"><i class="ri-youtube-fill"></i></a></div>
+            <div class="socials__item"><a href="https://www.linkedin.com/in/eddie-santiago-delgado-campo-96690a2a3/" target="_blank" aria-label="Ir al Linkedin del Desarrollador"><i class="ri-linkedin-box-fill"></i></a></div>
         </div>
     </nav>
 
     <div class="wrapper">
         <header class="header">
             <div class="header__group">
-                <button class="header__menu">
+                <button class="header__menu" aria-label="Abrir Sidebar">
                     <i class="ri-menu-line"></i>
                 </button>
                 <h1 class="header__heading">Dashboard - <span>Skedify</span></h1>
             </div>
             <div class="header__group">
-                <a href="/pages/configuracion.html"><img src="/assets/avatars/default-user.svg" alt="Avatar" class="header__avatar"></a>
+                <a href="/pages/configuracion.html" aria-label="Configurar Perfil"><img src="/assets/avatars/default-user.svg" alt="Avatar" class="header__avatar"></a>
                 <div class="header__profile">
                     <p class="profile__user"></p>
                     <span class="profile__role"></span>
@@ -153,7 +153,7 @@
                     <h3 class="container__heading"><i class="ri-star-line"></i> Secciones Recomendadas</h3>
                     <div class="sections__cards">
                         <div class="sections__card">
-                            <a href="pages/citas/control.html">
+                            <a href="pages/citas/control.html" aria-label="Ir a Citas">
                                 <div class="sections__picture">
                                     <img src="assets/svg/citas-agendadas.svg" alt="Citas Agendadas">
                                 </div>
@@ -161,7 +161,7 @@
                             </a>
                         </div>
                         <div class="sections__card">
-                            <a href="pages/clientes/control.html">
+                            <a href="pages/clientes/control.html" aria-label="Ir a Clientes">
                                 <div class="sections__picture">
                                     <img src="assets/svg/clientes-registrados.svg" alt="Clientes Registrados">
                                 </div>
@@ -169,7 +169,7 @@
                             </a>
                         </div>
                         <div class="sections__card">
-                            <a href="pages/servicios/control.html">
+                            <a href="pages/servicios/control.html" aria-label="Ir a Servicios">
                                 <div class="sections__picture">
                                     <img src="assets/svg/servicios-registrados.svg" alt="Servicios Registrados">
                                 </div>
@@ -183,13 +183,20 @@
                     <div class="wallet__card">
                         <div class="wallet__content">
                             <i class="ri-wallet-3-fill"></i>
+                            <div class="spinner spinner--hidden" id="spinner-incomes">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                              </div>
                             <strong class="wallet__amount"><span id="incomes"></span></strong>
                             <form action="#" class="wallet__form">
-                                <label for="ingresos" class="wallet__label">Ingresos:</label>
-                                <select name="ingresos" id="ingresos" class="wallet__select">
-                                    <option value="Mensuales">Mensuales</option>
-                                    <option value="Mensuales" selected>Semanales</option>
-                                    <option value="Diarios">Diarios</option>
+                                <label for="ingresos-select" class="wallet__label">Ingresos:</label>
+                                <select name="ingresos-select" id="ingresos-select" class="wallet__select" aria-label="Rango de fechas para Ingresos">
+                                    <option value="mensuales">Mensuales</option>
+                                    <option value="semanales" selected>Semanales</option>
+                                    <option value="diarios">Diarios</option>
                                 </select>
                             </form>
                         </div>

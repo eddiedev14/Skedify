@@ -2,6 +2,10 @@ body{
     overflow: hidden;
 }
 
+body:has(.preloader--hidden){
+  overflow: visible;
+}
+
 .preloader{
     position: fixed;
     inset: 0;
