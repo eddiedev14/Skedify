@@ -1,8 +1,8 @@
+import { incomesSpinner } from "../selectores.js";
 import { formatDateRange, getDailyRange, reloadPage } from "../funciones.js";
 import Alert from "./Alert.js";
 import UI from "../classes/UI.js";
 import DB from "../classes/DB.js";
-import { incomesSpinner } from "../selectores.js";
 
 const incomesDateRanges = {
     diarios: getDailyRange,

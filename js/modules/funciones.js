@@ -1,5 +1,5 @@
 import { validationFormConfig } from "./variables.js";
-import { clientInput, form, formSubmit, inputs, modal, serviceInput } from "./selectores.js";
+import { clientInput, form, formSubmit, inputs, serviceInput } from "./selectores.js";
 import Alert from "./components/Alert.js";
 import { openModal } from "./components/Modal.js";
 import { createTableInstance } from "./components/Datatables.js";
@@ -61,7 +61,7 @@ export function validateForm(){
     return true;
 }
 
-export function sendForm(e, objectStore){
+export function sendForm(e, objectStore = null){
     e.preventDefault();
     const isValid = validateForm();
 
@@ -113,8 +113,7 @@ export function getURLId() {
 export function showSelectRecords(){
     const promises = [DB.getRecords("services"), DB.getRecords("clients")];
     Promise.all(promises)
-        .then(data => {
-            const [services, clients] = data;
+        .then(([services, clients]) => {
             UI.createSelectOptions(services, serviceInput);
             UI.createSelectOptions(clients, clientInput);
         })

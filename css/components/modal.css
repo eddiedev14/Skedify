@@ -6,7 +6,6 @@
     z-index: 199;
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
     justify-content: center;
     align-items: center;
 }

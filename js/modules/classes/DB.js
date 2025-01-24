@@ -1,5 +1,5 @@
 import { modalAppointmentStateInput } from "../selectores.js";
-import { getFormData, goToControlPage, reloadPage, toCustomISOFormat, getDailyRange } from "../funciones.js";
+import { getFormData, goToControlPage, reloadPage, getDailyRange } from "../funciones.js";
 import Toast from "../components/Toast.js";
 import Alert from "../components/Alert.js";
 import UI from "./UI.js";
@@ -156,10 +156,12 @@ class DB{
         updateAppointmentDate(id, newDay){
             this.getRecord("appointments", id)
                 .then(appointment => {
-                    const date = new Date(appointment.fecha);
-                    //Setting the day without being affected by the time zone
-                    date.setUTCDate(newDay);
-                    const fecha = toCustomISOFormat(date);
+                    //Updating only the day from the original ISO date
+                    const originalDateISO = appointment.fecha;
+                    const [datePart, timePart] = originalDateISO.split("T");
+                    const [year, month] = datePart.split("-");
+                    const newDayFormatted = newDay.padStart(2, "0");
+                    const fecha = `${year}-${month}-${newDayFormatted}T${timePart}`;
 
                     const updatedAppointment = { ...appointment, fecha }
                     const transaction = this.#db.transaction("appointments", "readwrite");
@@ -174,9 +176,6 @@ class DB{
 
     async getMonthlyAppointments([firstDateStr, lastDateStr]) {
         if (!this.#db) await this.init();
-
-        console.log(firstDateStr)
-        console.log(lastDateStr)
 
         return new Promise((resolve, reject) => {
             const transaction = this.#db.transaction("appointments", "readonly");
@@ -254,20 +253,19 @@ class DB{
         if (!priceServicesMap) await this.createPriceServicesMap() 
 
         return new Promise((resolve, reject) => {
-            //2. Get appointments between date range
+            //Get appointments between date range
             const transaction = this.#db.transaction("appointments", "readonly");
             const objectStoreElement = transaction.objectStore("appointments");
             const dateIndex = objectStoreElement.index("fecha_idx")
             const cursorRequest = dateIndex.openCursor(IDBKeyRange.bound(startDate, endDate));
 
-            //3. Create accumulator variable
             let incomes = 0;
 
             cursorRequest.onsuccess = () => {
                 const cursor = cursorRequest.result;
 
                 if (cursor) {
-                    //4. For each appointment, the value of the service is added if its status is "Completada"
+                    //For each appointment, the value of the service is added if its status is "Completada"
                     const appointment = cursor.value;
                     
                     if (appointment.estado === "Completada") {
@@ -277,7 +275,6 @@ class DB{
 
                     cursor.continue();
                 }else{
-                    //5. Resolve with the accumulator variable
                     resolve(incomes)
                 }
             }

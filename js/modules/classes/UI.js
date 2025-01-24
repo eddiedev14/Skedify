@@ -30,7 +30,7 @@ class UI{
         headerProfileRole.textContent = role;
     }
 
-    showFormUserInfo = (e) =>{
+    showFormUserInfo = () =>{
         const { name, email, phone, role, avatar } = LocalStorage.getUser();
 
         this.updateProfileAvatar(profileAvatar, avatar);

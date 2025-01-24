@@ -9,7 +9,7 @@ export function selectAvatar(e) {
     if (!avatarElement) return;
 
     const modalPreviousSelect = document.querySelector(".modal__figure--selected");
-
+    
     if (modalPreviousSelect) {
         modalPreviousSelect.classList.remove("modal__figure--selected");
     }

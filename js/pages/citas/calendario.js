@@ -1,5 +1,5 @@
 import { calendar, calendarDays, infoCalendarBtn, modalCancelBtn, modalCloseBtn, nextMonthBtn, previousMonthBtn } from "../../modules/selectores.js";
-import { dragEndHandler, dragLeaveHandler, dragOverHandler, dropAppointment, loadAppointmentsModal, renderCalendar, setMonth, startDrag } from "../../modules/components/Calendar.js";
+import { dragEndHandler, dragLeaveHandler, dragOverHandler, dropAppointment, loadAppointmentsModal, renderCalendar, setMonth } from "../../modules/components/Calendar.js";
 import { closeModal } from "../../modules/components/Modal.js";
 import Alert from "../../modules/components/Alert.js";
 

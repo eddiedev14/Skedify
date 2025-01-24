@@ -27,8 +27,8 @@ export function renderCalendar() {
     //Move grid to the first weekday of the month
     firstDayGrid.style.gridColumnStart = firstWeekDay === 0 ? 7 : firstWeekDay;
 
-    //Hide/show the last four days
-    for (let i = 30; i >= 27; i--) {
+    //Hide/show the last three days
+    for (let i = 30; i >= 28; i--) {
         const calendarDay = calendarDays[i];
         const day = Number(calendarDay.dataset.day);
         calendarDay.classList.toggle("calendar__day--hidden", day > lastMonthDay)
