@@ -34,7 +34,7 @@ Con el objetivo de optimizar la gestión de citas, mejorar la planificación dia
 
 ## Documentación
 
-[Documentación](https://www.notion.so/Tablero-de-Tareas-16b009b2d10681a4a700d1ef2fb0a57c?pvs=4)
+[Documentación](https://www.notion.so/Descripci-n-del-Proyecto-16b009b2d10681438ae5e62b894bf42f?pvs=4)
 
 
 ## Tecnologías Empleadas
